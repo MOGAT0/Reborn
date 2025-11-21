@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp12qjps8fub0"]
+
+[ext_resource type="PackedScene" uid="uid://3ffavvygj6q3" path="res://weapons/shields/normal shield/normal_shield.glb" id="1_6u3x4"]
+[ext_resource type="Script" uid="uid://cppwst2a7tq3c" path="res://weapons/shields/normal shield/scene/normal_shield.gd" id="1_jvpxd"]
+
+[node name="NormalShield" type="Node3D"]
+script = ExtResource("1_jvpxd")
+
+[node name="normal_shield2" parent="." instance=ExtResource("1_6u3x4")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1yfilc5kjmfm"]
+
+[ext_resource type="Script" uid="uid://840hm70fdqok" path="res://weapons/shields/great shield/scene/great_shield.gd" id="1_6f41h"]
+[ext_resource type="PackedScene" uid="uid://c8j7yqn3ryfp4" path="res://weapons/shields/great shield/great_shield.glb" id="1_7s176"]
+
+[node name="GreatShield" type="Node3D"]
+script = ExtResource("1_6f41h")
+
+[node name="great_shield2" parent="." instance=ExtResource("1_7s176")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)

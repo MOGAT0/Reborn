@@ -1,0 +1,14 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+*.blend
+*.fbx
+*.dae
+*.obj
+*.gltf
+*.glb
+*.max
+*.ma
+*.mb
+*.stl

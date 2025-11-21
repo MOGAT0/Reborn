@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponInfo" load_steps=2 format=3 uid="uid://eqgalmoxifie"]
+
+[ext_resource type="Script" uid="uid://cfl02rf52uc0o" path="res://utils/gd/weapon_info.gd" id="1_sppia"]
+
+[resource]
+script = ExtResource("1_sppia")
+anim_list = Array[String](["longsword_attack_1", "longsword_attack_2", "longsword_attack_3", "longsword_attack_4"])
+wait_time = 0.8
+switch_time = 0.45
+delay_aceleration = Array[float]([0.5, 0.3, 0.3, 0.4])
+metadata/_custom_type_script = "uid://cfl02rf52uc0o"
