@@ -33,7 +33,7 @@ var is_crouching: bool = false
 
 @onready var collider: CollisionShape3D = %collider
 @onready var crouch_collider: CollisionShape3D = %crouch_collider
-
+@onready var crouch_ray: ShapeCast3D = %crouch_ray
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -44,6 +44,7 @@ func _process(delta: float) -> void:
 	_camera_rotation()
 	_handle_lock(delta)
 	gravity_handling(delta)
+	collider.disabled = is_crouching
 	crouch_collider.disabled = !collider.disabled
 	
 	move_and_slide()
@@ -58,6 +59,7 @@ func gravity_handling(delta:float) -> void:
 
 func _accelerate(amount: float = 2.0, delay_sec: float = 0.3) -> void:
 	await get_tree().create_timer(delay_sec).timeout
+	print("accelerate")
 
 	var input_dir: Vector2 = Input.get_vector("d", "a", "s", "w")
 
@@ -83,8 +85,10 @@ func movements(delta:float):
 		velocity.x = move_toward(velocity.x,0,SPEED)
 		velocity.z = move_toward(velocity.z,0,SPEED)
 		
-	if Input.is_action_just_pressed("crouch"):
+	if Input.is_action_just_pressed("crouch") and !crouch_ray.is_colliding():
 		is_crouching = !is_crouching
+		
+	#print(is_crouching)
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -95,6 +99,7 @@ func _input(event: InputEvent) -> void:
 var cam_y_smoothing_done := false
 
 func _handle_lock(delta: float):
+
 	if !lock_on.target_lock:
 		if player_dir and state_machine.current_state is not Move_state:
 			body.rotation.y = lerp_angle(body.rotation.y, atan2(velocity.x,velocity.z),delta * 30)

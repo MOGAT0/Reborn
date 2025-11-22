@@ -15,23 +15,31 @@ func enter():
 	player.SPEED = player.sprint_speed
 	player.FOV = player.sprint_fov
 	
+	player.is_crouching = false
 
 func update(delta:float):
+	
 	player.weapon_stance_handler()
 	if player.velocity.y > 0.0:
 		state_machine.change_state("jump")
+		return
 	elif !player.is_on_floor() and !ground_ray.is_colliding():
 		state_machine.change_state("fall_idle")
+		return
 	elif Input.is_action_just_pressed("attack") and weapon_manager.get_children().size() > 0:
 		state_machine.change_state("attack")
+		return
 	elif player.velocity.length() == 0 and player.player_dir == Vector2.ZERO:
 		state_machine.change_state("idle")
+		return
 		
 	elif !Input.is_action_pressed("sprint"):
 		if player.velocity.length() == 0 and player.player_dir == Vector2.ZERO:
 			state_machine.change_state("idle")
+			return
 		elif player.velocity.length() != 0.0:
 			state_machine.change_state("move")
+			return
 
 func physics_update(delta:float):
 	player.movements(delta)

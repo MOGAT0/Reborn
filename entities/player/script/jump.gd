@@ -12,9 +12,14 @@ class_name Jump_state
 func enter():
 	animation_tree["parameters/conditions/jump"] = true
 	player.FOV = player.normal_fov
+	
+	player.is_crouching = false
+	
 func update(delta:float):
+	
 	if animation_state.get_current_node() == "fall_idle":
 		state_machine.change_state("fall_idle")
+		return
 		
 func physics_update(delta:float):
 	player.movements(delta)

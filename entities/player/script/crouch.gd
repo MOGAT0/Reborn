@@ -5,42 +5,76 @@ class_name CrouchState
 @onready var animation_tree: AnimationTree = %AnimationTree
 @onready var animation_state = animation_tree["parameters/playback"]
 @onready var ground_ray: ShapeCast3D = %ground_ray
+@onready var crouch_ray: ShapeCast3D = %crouch_ray
 
 @onready var collider: CollisionShape3D = %collider
 @onready var weapon_manager: WeaponManager = %weapon_manager
 @onready var offhand_manager: Node3D = %offhand_manager
 
-var crouch_timer:float = 0.3
+
 
 func enter():
-	animation_tree["parameters/conditions/move"] = true
-	animation_tree["parameters/movement/move_speed/transition_request"] = "crouch"
-	collider.disabled = true
+	animation_tree["parameters/conditions/crouch"] = true
+
 	player.SPEED = player.walk_speed
 	player.FOV = player.normal_fov
-	
+
 
 func _process(delta: float) -> void:
+	if crouch_ray.is_colliding():return
+	
+	if !player.is_crouching and state_machine.current_state.name != "attack" \
+	and state_machine.current_state.name != "run" \
+	and state_machine.current_state.name != "jump" \
+	and state_machine.current_state.name != "fall_idle" \
+	and state_machine.current_state.name != "land":
+
+		if player.velocity.length() > 0.1:
+			state_machine.change_state("move")
+			return
+
+		if player.velocity.length() <= 0.1 and player.player_dir == Vector2.ZERO:
+			state_machine.change_state("idle")
+			return
+			
+		
+
 	if player.velocity.y > 0.0:
 		state_machine.change_state("jump")
-	elif !player.is_on_floor() and !ground_ray.is_colliding():
-		state_machine.change_state("fall_idle")
-	elif Input.is_action_just_pressed("attack") and weapon_manager.get_children().size() > 0:
+		return
+
+	if Input.is_action_just_pressed("attack") and weapon_manager.get_children().size() > 0:
 		state_machine.change_state("attack")
-	elif state_machine.current_state.name == "crouch" and Input.is_action_just_pressed("crouch"):
+		return
+		
+	if Input.is_action_pressed("sprint") and player.velocity.length() > 0.1 and state_machine.current_state.name != "attack":
+		state_machine.change_state("run")
+		return
+
+	if !player.is_on_floor() and !ground_ray.is_colliding():
+		state_machine.change_state("fall_idle")
+		return
+		
+	if Input.is_action_pressed("shield"):
 		state_machine.change_state("idle")
-	
-	#print(state_machine.current_state.name)
-func physics_update(delta:float):
-	
+		return
+
+
+
+
+
+
+func physics_update(delta: float):
 	player.movements(delta)
 
-	if player.velocity.length() == 0:
-		animation_tree["parameters/movement/crouch_transition/transition_request"] = "crouch_idle"
-	else:
-		animation_tree["parameters/movement/crouch_transition/transition_request"] = "crouch"
+	# Smooth crouch speed blend (0 = idle, 1 = full crouch walk)
+	var target :float = clamp(player.velocity.length(), 0.0, 1.0)
+	var current :float = animation_tree["parameters/crouch/crouch_dir/blend_position"]
+
+	var smoothed :float = lerp(current, target, delta * 10.0)
+	animation_tree["parameters/crouch/crouch_dir/blend_position"] = smoothed
+
 
 
 func exit():
-	animation_tree["parameters/conditions/move"] = false
-	collider.disabled = false
+	animation_tree["parameters/conditions/crouch"] = false

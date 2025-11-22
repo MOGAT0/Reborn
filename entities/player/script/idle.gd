@@ -13,26 +13,28 @@ class_name Idle_state
 
 func enter():
 	animation_tree["parameters/conditions/idle"] = true
-	print(weapon_manager.get_children().size())
 	player.FOV = player.normal_fov
+	player.is_crouching = false
 
 func update(delta:float):
 	player.weapon_stance_handler()
+	
 	if player.velocity.y > 0.0:
 		state_machine.change_state("jump")
+		return
+	elif player.is_crouching:
+		state_machine.change_state("crouch")
+		return
 	elif player.velocity.length() != 0.0:
 		state_machine.change_state("move")
+		return
 	elif !player.is_on_floor() and !ground_ray.is_colliding():
 		state_machine.change_state("fall_idle")
+		return
 	elif Input.is_action_just_pressed("attack") and weapon_manager.get_children().size() > 0:
 		state_machine.change_state("attack")
-	#elif Input.is_action_just_pressed("crouch"):
-		#state_machine.change_state("crouch")
-		
+		return
 
-
-		
-		
 func physics_update(delta:float):
 	player.movements(delta)
 

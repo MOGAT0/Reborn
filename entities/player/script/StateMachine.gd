@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 func change_state(new_state_name: String):
 	var new_state: State = states.get(new_state_name.to_lower())
 	
-	assert(new_state,"State Not Found: " + new_state_name)
+	#assert(new_state,"State Not Found: " + new_state_name)
 	
 	if current_state:
 		current_state.exit()

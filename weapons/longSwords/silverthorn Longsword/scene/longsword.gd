@@ -12,11 +12,10 @@ var wait_time: float = 0.0
 var combo_failed: bool = false
 
 var switch_timer : float = 0.0
-var player: Player = null
+@export var player: Player
 var aceleration_index : int = 0
 
-func _ready() -> void:
-	player = owner
+
 
 func _process(delta: float) -> void:
 	if animation_tree:

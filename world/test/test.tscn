@@ -29,9 +29,8 @@ volumetric_fog_density = 0.01
 material = ExtResource("1_2khio")
 size = Vector3(10000, 1, 10000)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vgoxc"]
-data = PackedVector3Array(-5000, 0.5, 5000, 5000, 0.5, 5000, -5000, -0.5, 5000, 5000, 0.5, 5000, 5000, -0.5, 5000, -5000, -0.5, 5000, 5000, 0.5, -5000, -5000, 0.5, -5000, 5000, -0.5, -5000, -5000, 0.5, -5000, -5000, -0.5, -5000, 5000, -0.5, -5000, 5000, 0.5, 5000, 5000, 0.5, -5000, 5000, -0.5, 5000, 5000, 0.5, -5000, 5000, -0.5, -5000, 5000, -0.5, 5000, -5000, 0.5, -5000, -5000, 0.5, 5000, -5000, -0.5, -5000, -5000, 0.5, 5000, -5000, -0.5, 5000, -5000, -0.5, -5000, 5000, 0.5, 5000, -5000, 0.5, 5000, 5000, 0.5, -5000, -5000, 0.5, 5000, -5000, 0.5, -5000, 5000, 0.5, -5000, -5000, -0.5, 5000, 5000, -0.5, 5000, -5000, -0.5, -5000, 5000, -0.5, 5000, 5000, -0.5, -5000, -5000, -0.5, -5000)
-backface_collision = true
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vol6t"]
+points = PackedVector3Array(-5000, -0.5, -5000, -5000, 0.5, -5000, 5000, -0.5, -5000, -5000, -0.5, 5000, -5000, 0.5, 5000, 5000, 0.5, -5000, 5000, -0.5, 5000, 5000, 0.5, 5000)
 
 [node name="Test" type="Node3D"]
 
@@ -46,11 +45,9 @@ shadow_enabled = true
 mesh = SubResource("BoxMesh_vol6t")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-collision_layer = 7
-collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_vgoxc")
+shape = SubResource("ConvexPolygonShape3D_vol6t")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
@@ -76,6 +73,11 @@ num_stairs = 10
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.970662, -0.2404483, 0, 0.2404483, 0.970662, 0, 0, 0, 1, -9.90649, 2.9437077, 8.764282)
 size = Vector3(0.56591797, 5.755371, 3.001709)
+material = ExtResource("1_2khio")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 5.9108047, 3.3078249, 2.2113085)
+size = Vector3(1.0100098, 5.755371, 3.001709)
 material = ExtResource("1_2khio")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]

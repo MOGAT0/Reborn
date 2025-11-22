@@ -16,6 +16,8 @@ func enter():
 	animation_tree["parameters/movement/move_speed/transition_request"] = "jogging"
 	player.SPEED = player.jog_speed
 	player.FOV = player.normal_fov
+	
+	player.is_crouching = false
 
 func update(delta:float):
 	_lock_movement(delta)
@@ -23,16 +25,22 @@ func update(delta:float):
 	
 	if player.velocity.y > 0.0:
 		state_machine.change_state("jump")
-	elif Input.is_action_pressed("sprint"):
+		return
+	elif player.is_crouching:
+		state_machine.change_state("crouch")
+		return
+	elif Input.is_action_pressed("sprint") and player.velocity.length() > 0.1 and state_machine.current_state.name != "attack":
 		state_machine.change_state("run")
+		return
 	elif !player.is_on_floor() and !ground_ray.is_colliding():
 		state_machine.change_state("fall_idle")
+		return
 	elif Input.is_action_just_pressed("attack") and weapon_manager.get_children().size() > 0:
 		state_machine.change_state("attack")
+		return
 	elif player.velocity.length() == 0 and player.player_dir == Vector2.ZERO:
 		state_machine.change_state("idle")
-	#elif Input.is_action_just_pressed("crouch"):
-		#state_machine.change_state("crouch")
+		return
 
 
 func _lock_movement(delta: float) -> void:

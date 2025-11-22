@@ -12,9 +12,14 @@ class_name Fall_idle
 func enter():
 	animation_tree["parameters/conditions/fall"] = true
 	player.FOV = player.normal_fov
+	
+	player.is_crouching = false
+	
 func update(delta:float):
+	
 	if player.is_on_floor() and ground_ray.is_colliding():
 		state_machine.change_state("land")
+		return
 
 func physics_update(delta:float):
 	player.movements(delta)
