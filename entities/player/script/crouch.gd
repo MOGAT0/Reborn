@@ -55,7 +55,7 @@ func _process(delta: float) -> void:
 		state_machine.change_state("fall_idle")
 		return
 		
-	if Input.is_action_pressed("shield"):
+	if Input.is_action_pressed("shield") and state_machine.current_state.name != "attack":
 		state_machine.change_state("idle")
 		return
 

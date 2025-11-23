@@ -1,0 +1,131 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://dqft4702qpdw2"
+path="res://.godot/imported/stickman w_ armor.glb-d1df1d927d4095d281f42664e8293d68.scn"
+
+[deps]
+
+source_file="res://entities/player/armor/stickman w_ armor.glb"
+dest_files=["res://.godot/imported/stickman w_ armor.glb-d1df1d927d4095d281f42664e8293d68.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"meshes": {
+"stickman w_ armor_Cylinder_002": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://entities/player/armor/Heavy_knight_armor/HK_helmet.res",
+"save_to_file/path": "uid://dpobkn8q0kw7d"
+},
+"stickman w_ armor_Mesh": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://entities/player/armor/Heavy_knight_armor/HK_chestplate.res",
+"save_to_file/path": "uid://c82yxmfoaqlhy"
+},
+"stickman w_ armor_Mesh_009": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://entities/player/armor/Heavy_knight_armor/HK_leggings.res",
+"save_to_file/path": "uid://fayaujw2l12"
+},
+"stickman w_ armor_Vert_007": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://entities/player/armor/Heavy_knight_armor/HK_gloves.res",
+"save_to_file/path": "uid://bir4s2rat6b5p"
+},
+"stickman w_ armor_Vert_015": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://entities/player/armor/knight_armor/Knight_chestplate.res",
+"save_to_file/path": "uid://llj4ljvcctpg"
+},
+"stickman w_ armor_Vert_018": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://entities/player/armor/body.res",
+"save_to_file/path": "uid://bsni7p2mkx0g4"
+},
+"stickman w_ armor_Vert_019": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://entities/player/armor/knight_armor/Knight_helmet.res",
+"save_to_file/path": "uid://cot1nlw5diomd"
+},
+"stickman w_ armor_Vert_049": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://entities/player/armor/knight_armor/Knight_leggings.res",
+"save_to_file/path": "uid://ndcqmelql34p"
+},
+"stickman w_ armor_Vert_056": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://entities/player/armor/knight_armor/Knight_gloves.res",
+"save_to_file/path": "uid://do8cuph8vsas1"
+}
+},
+"nodes": {
+"PATH:Armature/Skeleton3D": {
+"retarget/bone_map": Resource("uid://c1yjmw26itfap", "res://entities/player/bone-map/player_bone_map.tres")
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1

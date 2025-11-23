@@ -149,7 +149,7 @@ func _camera_rotation():
 	
 func weapon_stance_handler() -> void:
 	var stance := ""
-
+	
 	if Input.is_action_pressed("shield") and (offhand_manager.get_child(0) is NormalShield or offhand_manager.get_child(0) is GreatShield):
 		stance = "shielding"
 	elif weapon_manager.get_child(0) is LongSword:

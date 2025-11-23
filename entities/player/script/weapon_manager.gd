@@ -10,6 +10,7 @@ var combat_blend_tree: AnimationNodeBlendTree
 
 
 
+#region weapon debug
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		match event.keycode:
@@ -20,7 +21,6 @@ func _input(event: InputEvent) -> void:
 			KEY_0:
 				despawn_weapon()
 
-#region weapon debug
 const SILVERTHORN_LONGSWORD = preload("uid://dqli8hcbtpjlm")
 const NORMAL_SHIELD = preload("uid://cp12qjps8fub0")
 @onready var offhand_manager: Node3D = %offhand_manager
@@ -28,11 +28,13 @@ const NORMAL_SHIELD = preload("uid://cp12qjps8fub0")
 func spawn_longsword() -> void:
 	var inst_LS = SILVERTHORN_LONGSWORD.instantiate()
 	inst_LS.player = owner
-	add_child(inst_LS)
+	if get_children().size() == 0:
+		add_child(inst_LS)
 	if get_children().size() > 0:
 		load_weapon_animation()
 	
 func spawn_shield() -> void:
+	if offhand_manager.get_children().size() != 0:return
 	var inst_NS = NORMAL_SHIELD.instantiate()
 	offhand_manager.add_child(inst_NS)
 
