@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://xe763dn2rwyd"]
+
+[ext_resource type="Texture2D" uid="uid://cqw5xxgs44cow" path="res://assets/grid-prototyping/orange/texture_05.png" id="1_vyscy"]
+
+[resource]
+albedo_texture = ExtResource("1_vyscy")
+uv1_triplanar = true
+stencil_flags = 2
+stencil_outline_thickness = 0.05

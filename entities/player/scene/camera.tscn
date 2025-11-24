@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://dvugeug1tsx4n" path="res://entities/player/script/camera.gd" id="1_0v0a4"]
 
 [node name="Camera" type="Camera3D"]
+cull_mask = 1048573
 script = ExtResource("1_0v0a4")

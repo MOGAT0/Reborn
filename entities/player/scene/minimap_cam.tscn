@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq625ksensm3f"]
+
+[ext_resource type="Script" uid="uid://cojkps7xy5f5f" path="res://entities/player/script/minimap_cam.gd" id="1_bdvct"]
+
+[node name="Camera3D" type="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+projection = 1
+size = 10.0
+script = ExtResource("1_bdvct")

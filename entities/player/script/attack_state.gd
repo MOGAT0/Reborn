@@ -42,7 +42,7 @@ func update(delta:float):
 			return
 	else:
 		#player.player_dir = Vector2.ZERO
-		print(animation_tree["parameters/combat/attack_transition/current_state"])
+		#print(animation_tree["parameters/combat/attack_transition/current_state"])
 		if animation_tree:
 			animation_tree["parameters/combat/attack_transition/transition_request"] = "attack_buffer_%d" % weapon_manager.weapon_obj.attack_index
 			

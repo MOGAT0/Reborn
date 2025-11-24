@@ -36,8 +36,8 @@ var is_crouching: bool = false
 @onready var crouch_ray: ShapeCast3D = %crouch_ray
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	cam_holder_y.rotate_y(deg_to_rad(180))
+	%minimap_display.visible = true
 
 func _process(delta: float) -> void:
 	camera.fov = lerp(camera.fov,FOV,delta*10)

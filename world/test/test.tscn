@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dr4dyo6drfu6n"]
+[gd_scene load_steps=12 format=3 uid="uid://dr4dyo6drfu6n"]
 
-[ext_resource type="Material" uid="uid://nnmv03e1kx0t" path="res://assets/grid-prototyping/grid_texture.tres" id="1_2khio"]
 [ext_resource type="Texture2D" uid="uid://dw5pje5l4jks3" path="res://assets/hdri/Sky.png" id="1_yq387"]
 [ext_resource type="PackedScene" uid="uid://ce4r3rqnfgjwi" path="res://entities/player/scene/player.tscn" id="2_2khio"]
+[ext_resource type="Material" uid="uid://6yccgrbswml2" path="res://assets/grid-prototyping/black_grid.tres" id="2_vgoxc"]
 [ext_resource type="PackedScene" uid="uid://byijpabd0dm8t" path="res://assets/3d objects/stairs.tscn" id="3_vol6t"]
 [ext_resource type="PackedScene" uid="uid://c7qvgekdcpogp" path="res://entities/dummy/scene/dummy.tscn" id="4_irxl6"]
+[ext_resource type="Material" uid="uid://cgx334y065mah" path="res://assets/grid-prototyping/green_grid.tres" id="4_vgoxc"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_irxl6"]
 panorama = ExtResource("1_yq387")
@@ -26,7 +27,7 @@ glow_bloom = 0.3
 volumetric_fog_density = 0.01
 
 [sub_resource type="BoxMesh" id="BoxMesh_vol6t"]
-material = ExtResource("1_2khio")
+material = ExtResource("2_vgoxc")
 size = Vector3(10000, 1, 10000)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vol6t"]
@@ -42,6 +43,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05861473, 0, -0.020469666)
 mesh = SubResource("BoxMesh_vol6t")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
@@ -73,37 +75,37 @@ num_stairs = 10
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.970662, -0.2404483, 0, 0.2404483, 0.970662, 0, 0, 0, 1, -9.90649, 2.9437077, 8.764282)
 size = Vector3(0.56591797, 5.755371, 3.001709)
-material = ExtResource("1_2khio")
+material = ExtResource("4_vgoxc")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 5.9108047, 3.3078249, 2.2113085)
 size = Vector3(1.0100098, 5.755371, 3.001709)
-material = ExtResource("1_2khio")
+material = ExtResource("4_vgoxc")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.333073, 2.9437077, 5.297724)
 size = Vector3(0.56591797, 5.755371, 3.001709)
-material = ExtResource("1_2khio")
+material = ExtResource("4_vgoxc")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, 68.35091, 100.28203, 16.568954)
 size = Vector3(0.56591797, 9.047974, 29.491638)
-material = ExtResource("1_2khio")
+material = ExtResource("4_vgoxc")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.8430349, -0.5378589, 0, 0.5378589, 0.8430349, 0, 0, 0, 1, -10.682779, 2.6098115, 12.292632)
 size = Vector3(0.56591797, 5.755371, 3.001709)
-material = ExtResource("1_2khio")
+material = ExtResource("4_vgoxc")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.67589897, -0.73699427, 0, 0.73699427, 0.67589897, 0, 0, 0, 1, -10.92972, 1.8841949, 15.983817)
 size = Vector3(0.56591797, 5.755371, 3.001709)
-material = ExtResource("1_2khio")
+material = ExtResource("4_vgoxc")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.48961076, -0.8719411, 0, 0.8719411, 0.48961076, 0, 0, 0, 1, -11.546073, 1.5912685, 19.786793)
 size = Vector3(0.56591797, 5.755371, 3.001709)
-material = ExtResource("1_2khio")
+material = ExtResource("4_vgoxc")
 
 [node name="dummy" parent="." instance=ExtResource("4_irxl6")]
 transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 10.079511, 19.554863)
