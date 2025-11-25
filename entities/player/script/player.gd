@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 	collider.disabled = is_crouching
 	crouch_collider.disabled = !collider.disabled
 	
-	print(animation_state.get_current_node())
+	#print(animation_state.get_current_node())
 	
 	move_and_slide()
 

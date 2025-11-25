@@ -1,4 +1,4 @@
-[gd_scene load_steps=259 format=3 uid="uid://ce4r3rqnfgjwi"]
+[gd_scene load_steps=260 format=3 uid="uid://ce4r3rqnfgjwi"]
 
 [ext_resource type="Script" uid="uid://eo0edwgrsytd" path="res://entities/player/script/player.gd" id="1_8xc6n"]
 [ext_resource type="PackedScene" uid="uid://bfatsur33ogof" path="res://entities/player/scene/camera.tscn" id="2_5gr5v"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://drynqfvrfytjn" path="res://assets/UI Textures/druid.png" id="11_gm5tb"]
 [ext_resource type="StyleBox" uid="uid://wk5ibeiexqjy" path="res://assets/UI Textures/slot_focused.tres" id="11_i5ndr"]
 [ext_resource type="Script" uid="uid://baeue152y6y0r" path="res://entities/player/script/camholder.gd" id="11_pw4o6"]
+[ext_resource type="Script" uid="uid://8hjsdl72c6lf" path="res://entities/player/script/equipment_manager.gd" id="11_ys083"]
 [ext_resource type="Texture2D" uid="uid://b7f06xyslywjk" path="res://assets/UI Textures/necklace1.png" id="12_ys083"]
 [ext_resource type="Texture2D" uid="uid://ce25nwv5wbci3" path="res://assets/UI Textures/boot.png" id="13_kiegh"]
 [ext_resource type="Texture2D" uid="uid://dc26rdxxecawa" path="res://assets/UI Textures/sword1.png" id="14_xuq6w"]
@@ -5989,6 +5990,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.9, 0.9)
 pivot_offset = Vector2(176, 247)
+script = ExtResource("11_ys083")
 
 [node name="top" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/equipment"]
 layout_mode = 2
@@ -6001,7 +6003,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_7e5v3")
 
-[node name="helmet" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top"]
+[node name="helmet" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -6042,7 +6044,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_7e5v3")
 
-[node name="chestplate" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top"]
+[node name="chestplate" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -6087,7 +6089,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_7e5v3")
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="gloves" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top2"]
+[node name="gloves" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top2" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -6129,7 +6131,7 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(164, 80)
 layout_mode = 2
 
-[node name="item" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top2/VBoxContainer/HBoxContainer2"]
+[node name="item" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top2/VBoxContainer/HBoxContainer2" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6163,7 +6165,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_fey8f")
 
-[node name="item2" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top2/VBoxContainer/HBoxContainer2"]
+[node name="item2" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top2/VBoxContainer/HBoxContainer2" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6197,7 +6199,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_fey8f")
 
-[node name="item3" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top2/VBoxContainer/HBoxContainer2"]
+[node name="item3" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top2/VBoxContainer/HBoxContainer2" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6231,7 +6233,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_fey8f")
 
-[node name="leggings" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top2"]
+[node name="leggings" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top2" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -6269,7 +6271,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_gawvw")
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="weapon" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top4"]
+[node name="weapon" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top4" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6303,7 +6305,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_u6ye5")
 
-[node name="weapon2" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top4"]
+[node name="weapon2" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top4" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6342,7 +6344,7 @@ custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_r6hl8")
 
-[node name="weapon3" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top4"]
+[node name="offhand" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top4" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6350,7 +6352,7 @@ size_flags_vertical = 6
 theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top4/weapon3"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top4/offhand"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6360,7 +6362,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top4/weapon3"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top4/offhand"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6370,13 +6372,13 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top4/weapon3/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top4/offhand/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_r5a04")
 
-[node name="weapon4" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top4"]
+[node name="offhand2" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top4" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6384,7 +6386,7 @@ size_flags_vertical = 6
 theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top4/weapon4"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top4/offhand2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6394,7 +6396,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top4/weapon4"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top4/offhand2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6404,7 +6406,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top4/weapon4/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top4/offhand2/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
@@ -6419,7 +6421,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_gm5tb")
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="consumable" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top3"]
+[node name="consumable" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top3" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6452,7 +6454,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="consumable2" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top3"]
+[node name="consumable2" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top3" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6486,7 +6488,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="consumable3" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top3"]
+[node name="consumable3" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top3" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6520,7 +6522,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="consumable4" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top3"]
+[node name="consumable4" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top3" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6554,7 +6556,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="consumable5" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top3"]
+[node name="consumable5" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top3" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6592,7 +6594,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="consumable" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top5"]
+[node name="consumable" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top5" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6626,7 +6628,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="consumable2" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top5"]
+[node name="consumable2" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top5" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6660,7 +6662,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="consumable3" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top5"]
+[node name="consumable3" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top5" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6694,7 +6696,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="consumable4" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top5"]
+[node name="consumable4" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top5" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6728,7 +6730,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="consumable5" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top5"]
+[node name="consumable5" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top5" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6766,7 +6768,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="consumable" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top6"]
+[node name="consumable" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top6" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6800,7 +6802,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="consumable2" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top6"]
+[node name="consumable2" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top6" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6834,7 +6836,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="consumable3" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top6"]
+[node name="consumable3" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top6" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6868,7 +6870,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="consumable4" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top6"]
+[node name="consumable4" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top6" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -6902,7 +6904,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="consumable5" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top6"]
+[node name="consumable5" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top6" groups=["equipment_btn"]]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
