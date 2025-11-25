@@ -29,7 +29,10 @@
 		#if player.velocity.y > 0.0:
 			#state_machine.change_state("jump")
 			#return
-			#
+		#if Input.is_action_pressed("sprint") and player.velocity.length() > 0.1 and state_machine.current_state.name != "attack":
+			#state_machine.change_state("run")
+			#return
+				#
 			#
 		#counter = 1
 	#counter -= delta * 10

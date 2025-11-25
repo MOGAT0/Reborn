@@ -11,15 +11,17 @@ class_name Fall_idle
 
 func enter():
 	animation_tree["parameters/conditions/fall"] = true
-	player.FOV = player.normal_fov
 	
 	player.is_crouching = false
 	
 func update(delta:float):
-	
-	if player.is_on_floor() and ground_ray.is_colliding():
-		state_machine.change_state("land")
-		return
+	if ground_ray.is_colliding():
+		if player.velocity.x != 0 or player.velocity.z != 0:
+			state_machine.change_state("move")
+			return
+		if player.velocity.length() == 0 and player.player_dir == Vector2.ZERO:
+			state_machine.change_state("idle")
+			return
 
 func physics_update(delta:float):
 	player.movements(delta)

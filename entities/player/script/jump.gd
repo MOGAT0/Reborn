@@ -11,8 +11,7 @@ class_name Jump_state
 
 func enter():
 	animation_tree["parameters/conditions/jump"] = true
-	player.FOV = player.normal_fov
-	
+
 	player.is_crouching = false
 	
 func update(delta:float):

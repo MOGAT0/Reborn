@@ -1,4 +1,4 @@
-[gd_scene load_steps=269 format=3 uid="uid://ce4r3rqnfgjwi"]
+[gd_scene load_steps=259 format=3 uid="uid://ce4r3rqnfgjwi"]
 
 [ext_resource type="Script" uid="uid://eo0edwgrsytd" path="res://entities/player/script/player.gd" id="1_8xc6n"]
 [ext_resource type="PackedScene" uid="uid://bfatsur33ogof" path="res://entities/player/scene/camera.tscn" id="2_5gr5v"]
@@ -20,18 +20,16 @@
 [ext_resource type="Script" uid="uid://cd8htgq4s56ag" path="res://entities/player/script/attack_state.gd" id="8_c0821"]
 [ext_resource type="Animation" uid="uid://wuk647l8h1eq" path="res://entities/player/imported_animation/longsword_hold.res" id="8_i0l08"]
 [ext_resource type="Texture2D" uid="uid://byaijdh75k2jo" path="res://assets/UI Textures/armor.png" id="8_jwefo"]
-[ext_resource type="Script" uid="uid://br8xukhnv0pqb" path="res://entities/player/script/land.gd" id="8_llfb5"]
 [ext_resource type="StyleBox" uid="uid://dxfbc38ubdo0k" path="res://assets/UI Textures/inv_slo.tres" id="8_lteq0"]
 [ext_resource type="Script" uid="uid://cnxdbugvr848s" path="res://entities/player/script/run.gd" id="9_ptkv0"]
 [ext_resource type="Texture2D" uid="uid://bxyr8imeofn1m" path="res://assets/UI Textures/trunk.png" id="9_vs3kw"]
-[ext_resource type="Texture2D" uid="uid://dol3oborx04m8" path="res://assets/UI Textures/sun1.png" id="10_rpsh7"]
 [ext_resource type="Script" uid="uid://cpjsvlahqt8of" path="res://entities/player/script/crouch.gd" id="10_wkl3h"]
 [ext_resource type="Script" uid="uid://dnsum3of1t54b" path="res://entities/player/script/weapon_manager.gd" id="11_dg4u3"]
 [ext_resource type="Texture2D" uid="uid://drynqfvrfytjn" path="res://assets/UI Textures/druid.png" id="11_gm5tb"]
+[ext_resource type="StyleBox" uid="uid://wk5ibeiexqjy" path="res://assets/UI Textures/slot_focused.tres" id="11_i5ndr"]
 [ext_resource type="Script" uid="uid://baeue152y6y0r" path="res://entities/player/script/camholder.gd" id="11_pw4o6"]
 [ext_resource type="Texture2D" uid="uid://b7f06xyslywjk" path="res://assets/UI Textures/necklace1.png" id="12_ys083"]
 [ext_resource type="Texture2D" uid="uid://ce25nwv5wbci3" path="res://assets/UI Textures/boot.png" id="13_kiegh"]
-[ext_resource type="Script" uid="uid://b0hdd84ep7dwy" path="res://entities/player/script/ground_distance.gd" id="13_v0pxu"]
 [ext_resource type="Texture2D" uid="uid://dc26rdxxecawa" path="res://assets/UI Textures/sword1.png" id="14_xuq6w"]
 [ext_resource type="PackedScene" uid="uid://cp12qjps8fub0" path="res://weapons/shields/normal shield/scene/normal_shield.tscn" id="15_sgsyk"]
 [ext_resource type="Texture2D" uid="uid://b55caynlv2cch" path="res://assets/UI Textures/shield1.png" id="15_xs4aj"]
@@ -101,9 +99,6 @@ texture = ExtResource("8_jwefo")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i5ndr"]
 texture = ExtResource("9_vs3kw")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gm5tb"]
-texture = ExtResource("10_rpsh7")
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7e5v3"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
@@ -139,6 +134,9 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0oeh"]
 texture = ExtResource("16_sta6s")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cy04h"]
+bg_color = Color(0.30980393, 0.29803923, 0.25882354, 0.7294118)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_qptj5"]
 top_radius = 5.0
@@ -4919,7 +4917,7 @@ input_3/break_loop_at_end = false
 input_3/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_rskob"]
-graph_offset = Vector2(-227, 126)
+graph_offset = Vector2(-328, 367)
 nodes/attack_transition/node = SubResource("AnimationNodeTransition_fkbio")
 nodes/attack_transition/position = Vector2(-20, 280)
 nodes/attack_buffer_0/node = SubResource("AnimationNodeBlendTree_imh8g")
@@ -5124,14 +5122,11 @@ nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tpjdx")
 nodes/TimeScale/position = Vector2(100, 200)
 node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qhr48"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t0oeh"]
 animation = &"land"
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_5gr5v"]
-graph_offset = Vector2(-412.92816, 56.3049)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_qhr48")
-nodes/Animation/position = Vector2(-92.00003, 176.00005)
-node_connections = [&"output", 0, &"Animation"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jsdj1"]
+animation = &"land"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_trnnj"]
 animation = &"run"
@@ -5503,7 +5498,6 @@ filter_enabled = true
 filters = ["%GeneralSkeleton:RightShoulder", "%GeneralSkeleton:arm.R", "%GeneralSkeleton:arm.R_end", "%GeneralSkeleton:chest.R"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_vwqy1"]
-graph_offset = Vector2(-248.9597, -73.05249)
 nodes/output/position = Vector2(780, 80)
 nodes/move_speed/node = SubResource("AnimationNodeTransition_tpjdx")
 nodes/move_speed/position = Vector2(500, 20)
@@ -5571,37 +5565,10 @@ xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"move"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_focbt"]
-xfade_time = 0.2
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_imh8g"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"land"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sgsyk"]
-xfade_time = 0.2
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"move"
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_04dpg"]
 xfade_time = 0.5
 switch_mode = 2
 advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8ivne"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"land"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_apncy"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"fall"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qhr48"]
 xfade_time = 0.2
@@ -5618,25 +5585,10 @@ xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"fall"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_864cw"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"land"
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wkl3h"]
 xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7e5v3"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"move"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lteq0"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"jump"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dg4u3"]
 xfade_time = 0.2
@@ -5659,11 +5611,6 @@ xfade_time = 0.2
 switch_mode = 2
 advance_mode = 2
 advance_condition = &"idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h2l6i"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"combat"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r5a04"]
 xfade_time = 0.2
@@ -5710,6 +5657,26 @@ xfade_time = 0.2
 advance_mode = 2
 advance_condition = &"fall"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2nl3t"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"move"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5jctk"]
+xfade_time = 0.2
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hhak1"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jxaq4"]
+xfade_time = 0.2
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5gr5v"]
 states/End/position = Vector2(-43, -84)
 states/Start/position = Vector2(96, -186)
@@ -5718,51 +5685,24 @@ states/combat/position = Vector2(-43, 59)
 states/crouch/node = SubResource("AnimationNodeBlendTree_r6hl8")
 states/crouch/position = Vector2(350, -186)
 states/fall_idle/node = SubResource("AnimationNodeBlendTree_qhr48")
-states/fall_idle/position = Vector2(734, 78)
+states/fall_idle/position = Vector2(734, 75)
 states/idle/node = SubResource("AnimationNodeBlendTree_c8uo4")
 states/idle/position = Vector2(88, -70)
 states/jump/node = SubResource("AnimationNodeBlendTree_8ivne")
 states/jump/position = Vector2(614, -49)
-states/land/node = SubResource("AnimationNodeBlendTree_5gr5v")
-states/land/position = Vector2(575, 228)
+states/land/node = SubResource("AnimationNodeAnimation_jsdj1")
+states/land/position = Vector2(253, 37)
+"states/land 2/node" = SubResource("AnimationNodeAnimation_t0oeh")
+"states/land 2/position" = Vector2(164, 309)
 states/movement/node = SubResource("AnimationNodeBlendTree_vwqy1")
-states/movement/position = Vector2(73, 204)
-transitions = ["movement", "idle", SubResource("AnimationNodeStateMachineTransition_tudq8"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_i0l08"), "idle", "movement", SubResource("AnimationNodeStateMachineTransition_fkbio"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_4bnqx"), "movement", "jump", SubResource("AnimationNodeStateMachineTransition_v0pxu"), "jump", "movement", SubResource("AnimationNodeStateMachineTransition_c0821"), "land", "idle", SubResource("AnimationNodeStateMachineTransition_focbt"), "movement", "land", SubResource("AnimationNodeStateMachineTransition_imh8g"), "land", "movement", SubResource("AnimationNodeStateMachineTransition_sgsyk"), "jump", "fall_idle", SubResource("AnimationNodeStateMachineTransition_04dpg"), "fall_idle", "land", SubResource("AnimationNodeStateMachineTransition_8ivne"), "land", "fall_idle", SubResource("AnimationNodeStateMachineTransition_apncy"), "movement", "fall_idle", SubResource("AnimationNodeStateMachineTransition_qhr48"), "fall_idle", "jump", SubResource("AnimationNodeStateMachineTransition_llfb5"), "idle", "fall_idle", SubResource("AnimationNodeStateMachineTransition_5gr5v"), "idle", "land", SubResource("AnimationNodeStateMachineTransition_864cw"), "fall_idle", "idle", SubResource("AnimationNodeStateMachineTransition_wkl3h"), "fall_idle", "movement", SubResource("AnimationNodeStateMachineTransition_7e5v3"), "land", "jump", SubResource("AnimationNodeStateMachineTransition_lteq0"), "idle", "combat", SubResource("AnimationNodeStateMachineTransition_dg4u3"), "movement", "combat", SubResource("AnimationNodeStateMachineTransition_ptkv0"), "combat", "movement", SubResource("AnimationNodeStateMachineTransition_pw4o6"), "combat", "idle", SubResource("AnimationNodeStateMachineTransition_c8mko"), "land", "combat", SubResource("AnimationNodeStateMachineTransition_h2l6i"), "idle", "crouch", SubResource("AnimationNodeStateMachineTransition_r5a04"), "movement", "crouch", SubResource("AnimationNodeStateMachineTransition_t0oeh"), "crouch", "idle", SubResource("AnimationNodeStateMachineTransition_jsdj1"), "crouch", "movement", SubResource("AnimationNodeStateMachineTransition_ytnlv"), "crouch", "combat", SubResource("AnimationNodeStateMachineTransition_wxy3p"), "jump", "crouch", SubResource("AnimationNodeStateMachineTransition_rskob"), "crouch", "jump", SubResource("AnimationNodeStateMachineTransition_u5ny7"), "fall_idle", "crouch", SubResource("AnimationNodeStateMachineTransition_5uga1"), "crouch", "fall_idle", SubResource("AnimationNodeStateMachineTransition_36qa1")]
-graph_offset = Vector2(-381, 69)
+states/movement/position = Vector2(14, 235)
+transitions = ["movement", "idle", SubResource("AnimationNodeStateMachineTransition_tudq8"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_i0l08"), "idle", "movement", SubResource("AnimationNodeStateMachineTransition_fkbio"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_4bnqx"), "movement", "jump", SubResource("AnimationNodeStateMachineTransition_v0pxu"), "jump", "movement", SubResource("AnimationNodeStateMachineTransition_c0821"), "jump", "fall_idle", SubResource("AnimationNodeStateMachineTransition_04dpg"), "movement", "fall_idle", SubResource("AnimationNodeStateMachineTransition_qhr48"), "fall_idle", "jump", SubResource("AnimationNodeStateMachineTransition_llfb5"), "idle", "fall_idle", SubResource("AnimationNodeStateMachineTransition_5gr5v"), "fall_idle", "idle", SubResource("AnimationNodeStateMachineTransition_wkl3h"), "idle", "combat", SubResource("AnimationNodeStateMachineTransition_dg4u3"), "movement", "combat", SubResource("AnimationNodeStateMachineTransition_ptkv0"), "combat", "movement", SubResource("AnimationNodeStateMachineTransition_pw4o6"), "combat", "idle", SubResource("AnimationNodeStateMachineTransition_c8mko"), "idle", "crouch", SubResource("AnimationNodeStateMachineTransition_r5a04"), "movement", "crouch", SubResource("AnimationNodeStateMachineTransition_t0oeh"), "crouch", "idle", SubResource("AnimationNodeStateMachineTransition_jsdj1"), "crouch", "movement", SubResource("AnimationNodeStateMachineTransition_ytnlv"), "crouch", "combat", SubResource("AnimationNodeStateMachineTransition_wxy3p"), "jump", "crouch", SubResource("AnimationNodeStateMachineTransition_rskob"), "crouch", "jump", SubResource("AnimationNodeStateMachineTransition_u5ny7"), "fall_idle", "crouch", SubResource("AnimationNodeStateMachineTransition_5uga1"), "crouch", "fall_idle", SubResource("AnimationNodeStateMachineTransition_36qa1"), "fall_idle", "land 2", SubResource("AnimationNodeStateMachineTransition_2nl3t"), "land 2", "movement", SubResource("AnimationNodeStateMachineTransition_5jctk"), "fall_idle", "land", SubResource("AnimationNodeStateMachineTransition_hhak1"), "land", "idle", SubResource("AnimationNodeStateMachineTransition_jxaq4")]
+graph_offset = Vector2(-342, 71)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ptkv0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pw4o6"]
 radius = 0.1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0821"]
-render_priority = 1
-transparency = 1
-no_depth_test = true
-shading_mode = 0
-albedo_color = Color(1, 0.085868, 0, 1)
-stencil_mode = 3
-stencil_flags = 1
-stencil_compare = 5
-stencil_reference = 2
-metadata/_stencil_owned = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_864cw"]
-next_pass = SubResource("StandardMaterial3D_c0821")
-shading_mode = 0
-disable_ambient_light = true
-disable_fog = true
-disable_specular_occlusion = true
-albedo_color = Color(0, 1, 0.20065093, 1)
-disable_receive_shadows = true
-stencil_mode = 2
-stencil_flags = 2
-stencil_reference = 2
-stencil_color = Color(1, 0.085868, 0, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_focbt"]
-radial_segments = 8
-rings = 4
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8xc6n"]
 radius = 0.553
@@ -5954,28 +5894,27 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_7e5v3")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI_manager/Inventory/BG_Panel"]
+[node name="side panel" type="VBoxContainer" parent="UI_manager/Inventory/BG_Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.9375
-anchor_top = 0.007716108
+anchor_left = 1.0044643
+anchor_top = 0.030864222
 anchor_right = 1.1607144
-anchor_bottom = 0.3904321
-offset_left = 30.0
-offset_top = 14.999981
-offset_bottom = -14.999977
+anchor_bottom = 0.25925925
 grow_horizontal = 0
 grow_vertical = 2
+pivot_offset = Vector2(35, 109)
 metadata/_edit_use_anchors_ = true
 
-[node name="slot" type="Button" parent="UI_manager/Inventory/BG_Panel/VBoxContainer"]
+[node name="slot" type="Button" parent="UI_manager/Inventory/BG_Panel/side panel"]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/VBoxContainer/slot"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/side panel/slot"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -5985,7 +5924,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/VBoxContainer/slot"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/side panel/slot"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -5995,20 +5934,21 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/VBoxContainer/slot/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/side panel/slot/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_cy04h")
 
-[node name="slot2" type="Button" parent="UI_manager/Inventory/BG_Panel/VBoxContainer"]
+[node name="slot2" type="Button" parent="UI_manager/Inventory/BG_Panel/side panel"]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/VBoxContainer/slot2"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/side panel/slot2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6018,7 +5958,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/VBoxContainer/slot2"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/side panel/slot2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6028,52 +5968,19 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/VBoxContainer/slot2/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/side panel/slot2/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_i5ndr")
 
-[node name="slot3" type="Button" parent="UI_manager/Inventory/BG_Panel/VBoxContainer"]
-custom_minimum_size = Vector2(70, 70)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/VBoxContainer/slot3"]
+[node name="equipment" type="VBoxContainer" parent="UI_manager/Inventory/BG_Panel"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/VBoxContainer/slot3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/VBoxContainer/slot3/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_gm5tb")
-
-[node name="slots" type="VBoxContainer" parent="UI_manager/Inventory/BG_Panel"]
-layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 0.48765433
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.48765433
+anchor_bottom = 0.5
 offset_left = -176.0
 offset_top = -247.0
 offset_right = 176.0
@@ -6081,28 +5988,28 @@ offset_bottom = 247.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.9, 0.9)
-pivot_offset = Vector2(179, 247)
-metadata/_edit_use_anchors_ = true
+pivot_offset = Vector2(176, 247)
 
-[node name="top" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/slots"]
+[node name="top" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/equipment"]
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="left_spacer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top"]
+[node name="left_spacer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top"]
 custom_minimum_size = Vector2(83.775, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_7e5v3")
 
-[node name="helmet" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top"]
+[node name="helmet" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top"]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top/helmet"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top/helmet"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6112,7 +6019,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top/helmet"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top/helmet"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6122,27 +6029,28 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top/helmet/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top/helmet/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_6k7l0")
 
-[node name="left_spacer2" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top"]
+[node name="left_spacer2" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top"]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_7e5v3")
 
-[node name="chestplate" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top"]
+[node name="chestplate" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top"]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top/chestplate"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top/chestplate"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6152,7 +6060,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top/chestplate"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top/chestplate"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6162,31 +6070,32 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top/chestplate/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top/chestplate/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_83ji8")
 
-[node name="right_spacer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top"]
+[node name="right_spacer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top"]
 custom_minimum_size = Vector2(83.775, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_7e5v3")
 
-[node name="top2" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/slots"]
+[node name="top2" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/equipment"]
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="gloves" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top2"]
+[node name="gloves" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top2"]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top2/gloves"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top2/gloves"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6196,7 +6105,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top2/gloves"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top2/gloves"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6206,28 +6115,29 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top2/gloves/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top2/gloves/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_s0ra0")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI_manager/Inventory/BG_Panel/slots/top2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/slots/top2/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top2/VBoxContainer"]
 custom_minimum_size = Vector2(164, 80)
 layout_mode = 2
 
-[node name="item" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top2/VBoxContainer/HBoxContainer2"]
+[node name="item" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top2/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 10
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top2/VBoxContainer/HBoxContainer2/item"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top2/VBoxContainer/HBoxContainer2/item"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6237,7 +6147,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top2/VBoxContainer/HBoxContainer2/item"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top2/VBoxContainer/HBoxContainer2/item"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6247,20 +6157,21 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top2/VBoxContainer/HBoxContainer2/item/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top2/VBoxContainer/HBoxContainer2/item/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_fey8f")
 
-[node name="item2" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top2/VBoxContainer/HBoxContainer2"]
+[node name="item2" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top2/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 10
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top2/VBoxContainer/HBoxContainer2/item2"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top2/VBoxContainer/HBoxContainer2/item2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6270,7 +6181,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top2/VBoxContainer/HBoxContainer2/item2"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top2/VBoxContainer/HBoxContainer2/item2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6280,20 +6191,21 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top2/VBoxContainer/HBoxContainer2/item2/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top2/VBoxContainer/HBoxContainer2/item2/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_fey8f")
 
-[node name="item3" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top2/VBoxContainer/HBoxContainer2"]
+[node name="item3" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top2/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 10
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top2/VBoxContainer/HBoxContainer2/item3"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top2/VBoxContainer/HBoxContainer2/item3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6303,7 +6215,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top2/VBoxContainer/HBoxContainer2/item3"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top2/VBoxContainer/HBoxContainer2/item3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6313,20 +6225,21 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top2/VBoxContainer/HBoxContainer2/item3/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top2/VBoxContainer/HBoxContainer2/item3/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_fey8f")
 
-[node name="leggings" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top2"]
+[node name="leggings" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top2"]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top2/leggings"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top2/leggings"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6336,7 +6249,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top2/leggings"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top2/leggings"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6346,24 +6259,25 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top2/leggings/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top2/leggings/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_gawvw")
 
-[node name="top4" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/slots"]
+[node name="top4" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/equipment"]
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="weapon" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top4"]
+[node name="weapon" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top4"]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top4/weapon"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top4/weapon"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6373,7 +6287,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top4/weapon"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top4/weapon"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6383,20 +6297,21 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top4/weapon/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top4/weapon/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_u6ye5")
 
-[node name="weapon2" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top4"]
+[node name="weapon2" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top4"]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top4/weapon2"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top4/weapon2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6406,7 +6321,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top4/weapon2"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top4/weapon2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6416,25 +6331,26 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top4/weapon2/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top4/weapon2/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_u6ye5")
 
-[node name="Panel" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top4"]
+[node name="Panel" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top4"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_r6hl8")
 
-[node name="weapon3" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top4"]
+[node name="weapon3" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top4"]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top4/weapon3"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top4/weapon3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6444,7 +6360,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top4/weapon3"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top4/weapon3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6454,20 +6370,21 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top4/weapon3/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top4/weapon3/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_r5a04")
 
-[node name="weapon4" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top4"]
+[node name="weapon4" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top4"]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top4/weapon4"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top4/weapon4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6477,7 +6394,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top4/weapon4"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top4/weapon4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6487,29 +6404,29 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top4/weapon4/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top4/weapon4/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_r5a04")
 
-[node name="Panel" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots"]
+[node name="Panel" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gm5tb")
 
-[node name="top3" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/slots"]
+[node name="top3" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/equipment"]
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="helmet" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top3"]
+[node name="consumable" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top3"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top3/helmet"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top3/consumable"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6519,7 +6436,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top3/helmet"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top3/consumable"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6529,20 +6446,21 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top3/helmet/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top3/consumable/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="helmet2" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top3"]
+[node name="consumable2" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top3"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top3/helmet2"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top3/consumable2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6552,7 +6470,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top3/helmet2"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top3/consumable2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6562,20 +6480,21 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top3/helmet2/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top3/consumable2/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="helmet3" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top3"]
+[node name="consumable3" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top3"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top3/helmet3"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top3/consumable3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6585,7 +6504,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top3/helmet3"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top3/consumable3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6595,20 +6514,21 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top3/helmet3/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top3/consumable3/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="helmet4" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top3"]
+[node name="consumable4" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top3"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top3/helmet4"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top3/consumable4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6618,7 +6538,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top3/helmet4"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top3/consumable4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6628,20 +6548,21 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top3/helmet4/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top3/consumable4/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="helmet5" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top3"]
+[node name="consumable5" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top3"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top3/helmet5"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top3/consumable5"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6651,7 +6572,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top3/helmet5"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top3/consumable5"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6661,24 +6582,25 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top3/helmet5/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top3/consumable5/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="top5" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/slots"]
+[node name="top5" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/equipment"]
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="helmet" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top5"]
+[node name="consumable" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top5"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top5/helmet"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top5/consumable"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6688,7 +6610,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top5/helmet"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top5/consumable"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6698,20 +6620,21 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top5/helmet/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top5/consumable/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="helmet2" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top5"]
+[node name="consumable2" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top5"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top5/helmet2"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top5/consumable2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6721,7 +6644,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top5/helmet2"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top5/consumable2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6731,20 +6654,21 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top5/helmet2/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top5/consumable2/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="helmet3" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top5"]
+[node name="consumable3" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top5"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top5/helmet3"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top5/consumable3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6754,7 +6678,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top5/helmet3"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top5/consumable3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6764,20 +6688,21 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top5/helmet3/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top5/consumable3/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="helmet4" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top5"]
+[node name="consumable4" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top5"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top5/helmet4"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top5/consumable4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6787,7 +6712,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top5/helmet4"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top5/consumable4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6797,20 +6722,21 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top5/helmet4/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top5/consumable4/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="helmet5" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top5"]
+[node name="consumable5" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top5"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top5/helmet5"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top5/consumable5"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6820,7 +6746,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top5/helmet5"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top5/consumable5"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6830,24 +6756,25 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top5/helmet5/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top5/consumable5/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="top6" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/slots"]
+[node name="top6" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/equipment"]
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="helmet" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top6"]
+[node name="consumable" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top6"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top6/helmet"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top6/consumable"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6857,7 +6784,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top6/helmet"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top6/consumable"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6867,20 +6794,21 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top6/helmet/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top6/consumable/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="helmet2" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top6"]
+[node name="consumable2" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top6"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top6/helmet2"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top6/consumable2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6890,7 +6818,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top6/helmet2"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top6/consumable2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6900,20 +6828,21 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top6/helmet2/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top6/consumable2/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="helmet3" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top6"]
+[node name="consumable3" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top6"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top6/helmet3"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top6/consumable3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6923,7 +6852,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top6/helmet3"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top6/consumable3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6933,20 +6862,21 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top6/helmet3/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top6/consumable3/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="helmet4" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top6"]
+[node name="consumable4" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top6"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top6/helmet4"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top6/consumable4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6956,7 +6886,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top6/helmet4"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top6/consumable4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6966,20 +6896,21 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top6/helmet4/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top6/consumable4/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
 
-[node name="helmet5" type="Button" parent="UI_manager/Inventory/BG_Panel/slots/top6"]
+[node name="consumable5" type="Button" parent="UI_manager/Inventory/BG_Panel/equipment/top6"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_styles/focus = ExtResource("11_i5ndr")
 flat = true
 
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top6/helmet5"]
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top6/consumable5"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6989,7 +6920,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_lteq0")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/slots/top6/helmet5"]
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/equipment/top6/consumable5"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6999,11 +6930,1516 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
 
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/slots/top6/helmet5/PanelContainer"]
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/equipment/top6/consumable5/PanelContainer"]
 modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_t0oeh")
+
+[node name="select_item" type="VBoxContainer" parent="UI_manager/Inventory/BG_Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -254.0
+offset_right = 176.0
+offset_bottom = 254.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+pivot_offset = Vector2(176, 247)
+
+[node name="slot" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/select_item"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="item" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot/item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot/item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot/item/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item2" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot/item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot/item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot/item2/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item3" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot/item3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot/item3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot/item3/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item4" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot/item4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot/item4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot/item4/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item5" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot/item5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot/item5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot/item5/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="slot2" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/select_item"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="item" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot2/item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot2/item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot2/item/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item2" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot2/item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot2/item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot2/item2/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item3" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot2/item3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot2/item3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot2/item3/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item4" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot2/item4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot2/item4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot2/item4/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item5" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot2/item5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot2/item5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot2/item5/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="slot3" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/select_item"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="item" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot3"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot3/item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot3/item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot3/item/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item2" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot3"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot3/item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot3/item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot3/item2/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item3" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot3"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot3/item3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot3/item3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot3/item3/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item4" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot3"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot3/item4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot3/item4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot3/item4/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item5" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot3"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot3/item5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot3/item5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot3/item5/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="slot4" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/select_item"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="item" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot4"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot4/item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot4/item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot4/item/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item2" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot4"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot4/item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot4/item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot4/item2/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item3" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot4"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot4/item3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot4/item3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot4/item3/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item4" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot4"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot4/item4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot4/item4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot4/item4/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item5" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot4"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot4/item5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot4/item5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot4/item5/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="slot5" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/select_item"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="item" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot5"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot5/item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot5/item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot5/item/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item2" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot5"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot5/item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot5/item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot5/item2/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item3" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot5"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot5/item3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot5/item3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot5/item3/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item4" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot5"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot5/item4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot5/item4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot5/item4/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item5" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot5"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot5/item5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot5/item5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot5/item5/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="slot6" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/select_item"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="item" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot6"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot6/item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot6/item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot6/item/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item2" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot6"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot6/item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot6/item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot6/item2/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item3" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot6"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot6/item3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot6/item3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot6/item3/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item4" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot6"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot6/item4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot6/item4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot6/item4/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item5" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot6"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot6/item5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot6/item5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot6/item5/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="slot7" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/select_item"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="item" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot7"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot7/item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot7/item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot7/item/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item2" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot7"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot7/item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot7/item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot7/item2/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item3" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot7"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot7/item3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot7/item3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot7/item3/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item4" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot7"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot7/item4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot7/item4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot7/item4/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item5" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot7"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot7/item5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot7/item5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot7/item5/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="slot8" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/select_item"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="item" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot8"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot8/item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot8/item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot8/item/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item2" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot8"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot8/item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot8/item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot8/item2/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item3" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot8"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot8/item3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot8/item3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot8/item3/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item4" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot8"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot8/item4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot8/item4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot8/item4/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item5" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot8"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot8/item5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot8/item5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot8/item5/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="slot9" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/select_item"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="item" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot9"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot9/item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot9/item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot9/item/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item2" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot9"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot9/item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot9/item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot9/item2/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item3" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot9"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot9/item3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot9/item3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot9/item3/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item4" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot9"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot9/item4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot9/item4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot9/item4/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="item5" type="Button" parent="UI_manager/Inventory/BG_Panel/select_item/slot9"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+
+[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot9/item5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("8_lteq0")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/select_item/slot9/item5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
+
+[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/select_item/slot9/item5/PanelContainer"]
+modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Panel" type="Panel" parent="UI_manager/Inventory"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.6111111
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cy04h")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true
@@ -7035,10 +8471,6 @@ metadata/_custom_type_script = "uid://b4rf5snjrpeww"
 [node name="fall_idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("weapon_manager")]
 script = ExtResource("6_tpjdx")
 weapon_manager = NodePath("../../weapon/weapon_manager")
-metadata/_custom_type_script = "uid://b4rf5snjrpeww"
-
-[node name="land" type="Node" parent="StateMachine"]
-script = ExtResource("8_llfb5")
 metadata/_custom_type_script = "uid://b4rf5snjrpeww"
 
 [node name="attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("weapon_manager")]
@@ -7104,7 +8536,7 @@ cast_shadow = 0
 mesh = SubResource("SphereMesh_5gr5v")
 
 [node name="weapon" type="BoneAttachment3D" parent="."]
-transform = Transform3D(-0.17696376, -0.039907146, 0.08420908, 0.07509354, -0.16808775, 0.0781499, 0.05517894, 0.10076639, 0.1637113, -0.4081674, 1.6140654, 0.2524639)
+transform = Transform3D(-0.051457513, -0.19279012, 0.013564585, 0.19326684, -0.05133325, 0.0035745234, 3.589512e-05, 0.014027615, 0.19950737, -1.0063227, 2.2498944, 1.4901155e-08)
 bone_name = "arm.R_end"
 bone_idx = 15
 use_external_skeleton = true
@@ -7116,7 +8548,7 @@ transform = Transform3D(-1.7262636e-10, 1.8802493e-07, 1, 0.86602545, 0.49999994
 script = ExtResource("11_dg4u3")
 
 [node name="offhand" type="BoneAttachment3D" parent="."]
-transform = Transform3D(-0.16320334, 0.024125572, -0.113059886, -0.07032982, -0.17595707, 0.063974954, -0.09175132, 0.09196212, 0.15206781, 0.37851697, 1.6010383, 0.26756108)
+transform = Transform3D(-0.05145753, 0.19279015, -0.013564577, -0.19326685, -0.051333275, 0.0035745224, -3.5895562e-05, 0.01402761, 0.19950737, 1.006323, 2.2498946, -2.980231e-09)
 bone_name = "arm.L_end"
 bone_idx = 8
 use_external_skeleton = true
@@ -7127,7 +8559,7 @@ unique_name_in_owner = true
 transform = Transform3D(-0.14253777, -0.25806606, -0.95555466, -0.87938654, -0.41006476, 0.24192186, -0.45427117, 0.874785, -0.16849008, 0.12, -0.045, 0)
 
 [node name="shield_store" type="BoneAttachment3D" parent="."]
-transform = Transform3D(0.19811906, -0.0006121786, -0.027356649, -1.1783792e-05, 0.19994792, -0.0045597507, 0.027363507, 0.004518481, 0.19806764, 0.008870378, 2.198451, -0.002647914)
+transform = Transform3D(0.1999998, 0, 0, 0, 0.19999991, 0, 0, 0, 0.19999991, 9.4974084e-14, 2.2383456, 4.593838e-08)
 bone_name = "UpperChest"
 bone_idx = 4
 use_external_skeleton = true
@@ -7147,7 +8579,7 @@ unique_name_in_owner = true
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 
 [node name="Armature" type="Node3D" parent="body"]
-transform = Transform3D(0.9995104, 0.02518333, -0.018511668, -0.024140399, 0.9982186, 0.054552443, 0.019852502, -0.054078918, 0.9983388, -0.21349552, -0.18263502, 0.51274145)
+transform = Transform3D(0.9999989, 0, 0, 0, 0.9999995, 0, 0, 0, 0.9999995, 0, 0, 0)
 
 [node name="GeneralSkeleton" type="Skeleton3D" parent="body/Armature"]
 unique_name_in_owner = true
@@ -7171,42 +8603,42 @@ bones/2/parent = 1
 bones/2/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.955641e-14, 1.3386388, 2.7605282e-08)
 bones/2/enabled = true
 bones/2/position = Vector3(8.955641e-14, 1.3386388, 2.7605282e-08)
-bones/2/rotation = Quaternion(0.011170126, -0.0031039987, 0.0028033636, 0.9999289)
+bones/2/rotation = Quaternion(0, 0, 0, 1)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Chest"
 bones/3/parent = 2
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3273094e-15, 1.0982561, 2.248934e-08)
 bones/3/enabled = true
 bones/3/position = Vector3(-2.3273094e-15, 1.0982561, 2.248934e-08)
-bones/3/rotation = Quaternion(0.014138162, -0.027922846, 0.004084557, 0.9995018)
+bones/3/rotation = Quaternion(0, 0, 0, 1)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "UpperChest"
 bones/4/parent = 3
 bones/4/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.296447e-14, 1.0982561, 2.2461064e-08)
 bones/4/enabled = true
 bones/4/position = Vector3(-5.296447e-14, 1.0982561, 2.2461064e-08)
-bones/4/rotation = Quaternion(0.013948329, -0.027820824, 0.0047488497, 0.9995044)
+bones/4/rotation = Quaternion(0, 0, 0, 1)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "chest.L"
 bones/5/parent = 4
 bones/5/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.506881e-14, 1.098259, 2.2432564e-08)
 bones/5/enabled = true
 bones/5/position = Vector3(-7.506881e-14, 1.098259, 2.2432564e-08)
-bones/5/rotation = Quaternion(0.000491131, 0.038672537, 0.015221052, 0.999136)
+bones/5/rotation = Quaternion(0, 0, 0, 1)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "LeftShoulder"
 bones/6/parent = 5
 bones/6/rest = Transform3D(0, 1, 0, 0, 0, 1, 1, 0, 0, 0.87466407, -0.29728815, -4.5831573e-08)
 bones/6/enabled = true
 bones/6/position = Vector3(0.87466407, -0.29728815, -4.5831573e-08)
-bones/6/rotation = Quaternion(0.49246052, 0.16671243, 0.84696835, -0.111059956)
+bones/6/rotation = Quaternion(0.5, 0.5, 0.5, -0.5)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "arm.L"
 bones/7/parent = 6
 bones/7/rest = Transform3D(-0.00017851219, 0.07013804, 0.9975372, -0.2572887, 0.9639516, -0.06782267, -0.9663345, -0.2566671, 0.017873647, -0.17986375, 1.6849763, -0.08502359)
 bones/7/enabled = true
 bones/7/position = Vector3(-0.17986375, 1.6849763, -0.08502359)
-bones/7/rotation = Quaternion(0.116851404, 0.6625117, -0.15051413, 0.7244099)
+bones/7/rotation = Quaternion(-0.0670751, 0.6975415, -0.11629768, 0.70385486)
 bones/7/scale = Vector3(0.99999994, 1, 0.99999994)
 bones/8/name = "arm.L_end"
 bones/8/parent = 7
@@ -7220,14 +8652,14 @@ bones/9/parent = 4
 bones/9/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.506881e-14, 1.098259, 2.2432564e-08)
 bones/9/enabled = true
 bones/9/position = Vector3(-7.506881e-14, 1.098259, 2.2432564e-08)
-bones/9/rotation = Quaternion(0.011377097, 0.018088935, -0.007136993, 0.9997462)
+bones/9/rotation = Quaternion(0, 0, 0, 1)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/name = "Head"
 bones/10/parent = 9
 bones/10/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1567091e-13, 0.54031754, 1.1147259e-08)
 bones/10/enabled = true
 bones/10/position = Vector3(-1.1567091e-13, 0.54031754, 1.1147259e-08)
-bones/10/rotation = Quaternion(0.011041126, 0.018093962, -0.0076345215, 0.9997462)
+bones/10/rotation = Quaternion(0, 0, 0, 1)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/name = "head_end"
 bones/11/parent = 10
@@ -7241,21 +8673,21 @@ bones/12/parent = 4
 bones/12/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.506881e-14, 1.098259, 2.2432564e-08)
 bones/12/enabled = true
 bones/12/position = Vector3(-7.506881e-14, 1.098259, 2.2432564e-08)
-bones/12/rotation = Quaternion(0.009749818, 0.049623378, 0.012505274, 0.99864215)
+bones/12/rotation = Quaternion(0, 0, 0, 1)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/name = "RightShoulder"
 bones/13/parent = 12
 bones/13/rest = Transform3D(0, -1, 0, 0, 0, 1, -1, 0, 0, -0.87466407, -0.2972888, -4.5870188e-08)
 bones/13/enabled = true
 bones/13/position = Vector3(-0.87466407, -0.2972888, -4.5870188e-08)
-bones/13/rotation = Quaternion(0.52796394, -0.1982605, -0.8133927, -0.14261608)
+bones/13/rotation = Quaternion(0.5, -0.5, -0.5, -0.5)
 bones/13/scale = Vector3(1, 1, 1)
 bones/14/name = "arm.R"
 bones/14/parent = 13
 bones/14/rest = Transform3D(-0.00017851405, -0.07013806, -0.9975372, 0.2572886, 0.96395147, -0.067822635, 0.9663345, -0.25666708, 0.017873643, 0.17986375, 1.6849759, -0.08502429)
 bones/14/enabled = true
 bones/14/position = Vector3(0.17986375, 1.6849759, -0.08502429)
-bones/14/rotation = Quaternion(0.14075051, -0.6527316, 0.17395066, 0.72379005)
+bones/14/rotation = Quaternion(-0.067075066, -0.6975415, 0.11629766, 0.70385486)
 bones/14/scale = Vector3(0.99999994, 0.9999999, 0.99999994)
 bones/15/name = "arm.R_end"
 bones/15/parent = 14
@@ -7269,35 +8701,35 @@ bones/16/parent = 1
 bones/16/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8136818e-14, 4.7628095e-07, 1.00282053e-10)
 bones/16/enabled = true
 bones/16/position = Vector3(-4.8136818e-14, 4.7628095e-07, 1.00282053e-10)
-bones/16/rotation = Quaternion(4.691229e-09, -8.940695e-08, -1.937151e-07, 1)
+bones/16/rotation = Quaternion(0, 0, 0, 1)
 bones/16/scale = Vector3(1, 1, 1)
 bones/17/name = "LeftUpperLeg"
 bones/17/parent = 16
 bones/17/rest = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, 1, 0.64214444, -0.064215355, -2.5691666e-08)
 bones/17/enabled = true
 bones/17/position = Vector3(0.64214444, -0.064215355, -2.5691666e-08)
-bones/17/rotation = Quaternion(0.035738453, 0.07501429, 0.9955466, 0.044528287)
+bones/17/rotation = Quaternion(0, 0, 1, 0)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "LeftLowerLeg"
 bones/18/parent = 17
 bones/18/rest = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -0.61029315, 3.1994221, 0.22759983)
 bones/18/enabled = true
 bones/18/position = Vector3(-0.61029315, 3.1994221, 0.22759983)
-bones/18/rotation = Quaternion(-0.03232892, 0.9686235, -0.21631037, 0.11803955)
+bones/18/rotation = Quaternion(0, 1, 0, 0)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/name = "LeftFoot"
 bones/19/parent = 18
 bones/19/rest = Transform3D(-1, 0, 0, 0, 0, -1, 0, -1, 0, 0.5363186, 3.7542384, 0.22759956)
 bones/19/enabled = true
 bones/19/position = Vector3(0.5363186, 3.7542384, 0.22759956)
-bones/19/rotation = Quaternion(0.04257509, 0.6091906, -0.79187334, -0.0032890905)
+bones/19/rotation = Quaternion(0, 0.70710677, -0.70710677, 0)
 bones/19/scale = Vector3(1, 1, 1)
 bones/20/name = "LeftToes"
 bones/20/parent = 19
 bones/20/rest = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -1.1455475e-07, 0.6540366, -0.22296639)
 bones/20/enabled = true
 bones/20/position = Vector3(-1.1455475e-07, 0.6540366, -0.22296639)
-bones/20/rotation = Quaternion(-3.747585e-07, 0.99999917, 0.0013252188, 1.3547634e-07)
+bones/20/rotation = Quaternion(0, 1, 0, 0)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/name = "foot2.L_end"
 bones/21/parent = 20
@@ -7311,35 +8743,35 @@ bones/22/parent = 1
 bones/22/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8136818e-14, 4.7628095e-07, 1.00282053e-10)
 bones/22/enabled = true
 bones/22/position = Vector3(-4.8136818e-14, 4.7628095e-07, 1.00282053e-10)
-bones/22/rotation = Quaternion(4.691229e-09, 8.940695e-08, 1.9371504e-07, 1)
+bones/22/rotation = Quaternion(0, 0, 0, 1)
 bones/22/scale = Vector3(1, 1, 1)
 bones/23/name = "RightUpperLeg"
 bones/23/parent = 22
 bones/23/rest = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, 1, -0.6421445, -0.06421553, -2.584875e-08)
 bones/23/enabled = true
 bones/23/position = Vector3(-0.6421445, -0.06421553, -2.584875e-08)
-bones/23/rotation = Quaternion(-0.06872884, 0.07273623, 0.99365985, -0.051243406)
+bones/23/rotation = Quaternion(0, 0, 1, 0)
 bones/23/scale = Vector3(1, 1, 1)
 bones/24/name = "RightLowerLeg"
 bones/24/parent = 23
 bones/24/rest = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.6102931, 3.1994221, 0.22759986)
 bones/24/enabled = true
 bones/24/position = Vector3(0.6102931, 3.1994221, 0.22759986)
-bones/24/rotation = Quaternion(0.02040171, 0.9760828, -0.20727524, -0.062316258)
+bones/24/rotation = Quaternion(0, 1, 0, 0)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/name = "RightFoot"
 bones/25/parent = 24
 bones/25/rest = Transform3D(-1, 0, 0, 0, 0, -1, 0, -1, 0, -0.53631866, 3.7542388, 0.22759953)
 bones/25/enabled = true
 bones/25/position = Vector3(-0.53631866, 3.7542388, 0.22759953)
-bones/25/rotation = Quaternion(-0.02299198, 0.6215359, -0.78239673, 0.0319364)
+bones/25/rotation = Quaternion(0, 0.70710677, -0.70710677, 0)
 bones/25/scale = Vector3(1, 1, 1)
 bones/26/name = "RightToes"
 bones/26/parent = 25
 bones/26/rest = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 5.8932812e-08, 0.65403646, -0.22296637)
 bones/26/enabled = true
 bones/26/position = Vector3(5.8932812e-08, 0.65403646, -0.22296637)
-bones/26/rotation = Quaternion(4.0705473e-07, 0.99999714, 0.0024349978, -5.358776e-08)
+bones/26/rotation = Quaternion(0, 1, 0, 0)
 bones/26/scale = Vector3(1, 1, 1)
 bones/27/name = "foot2.R_end"
 bones/27/parent = 26
@@ -7416,10 +8848,9 @@ parameters/conditions/crouch = false
 parameters/conditions/fall = false
 parameters/conditions/idle = false
 parameters/conditions/jump = false
-parameters/conditions/land = false
 parameters/conditions/move = false
 parameters/combat/attack_transition/current_state = "attack_buffer_4"
-parameters/combat/attack_transition/transition_request = ""
+parameters/combat/attack_transition/transition_request = "attack_buffer_1"
 parameters/combat/attack_transition/current_index = 3
 parameters/combat/attack_buffer_0/TimeScale/scale = 3.0
 parameters/combat/attack_buffer_1/TimeScale/scale = 2.0
@@ -7444,9 +8875,9 @@ parameters/idle/Blend2/blend_amount = 1.0
 parameters/idle/TimeScale/scale = 1.0
 "parameters/idle/Blend2 2/blend_amount" = 1.0
 parameters/jump/TimeScale/scale = 2.5666666
-parameters/movement/move_speed/current_state = "jogging"
+parameters/movement/move_speed/current_state = "running"
 parameters/movement/move_speed/transition_request = ""
-parameters/movement/move_speed/current_index = 0
+parameters/movement/move_speed/current_index = 1
 parameters/movement/move_dir/blend_position = Vector2(0, 1)
 parameters/movement/move_dir/0/shielding/blend_amount = 1.0
 parameters/movement/move_dir/0/stance/current_state = "no_equiped"
@@ -7496,26 +8927,6 @@ shape = SubResource("SphereShape3D_pw4o6")
 target_position = Vector3(0, 1.6, 0)
 collision_mask = 4
 debug_shape_custom_color = Color(1, 0, 0.85445786, 1)
-
-[node name="ground_distance" type="Node3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.040599998, 0)
-visible = false
-script = ExtResource("13_v0pxu")
-
-[node name="ground_ray" type="RayCast3D" parent="ground_distance"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-target_position = Vector3(0, -10, 0)
-collision_mask = 4
-hit_from_inside = true
-
-[node name="Marker3D" type="Marker3D" parent="ground_distance/ground_ray"]
-top_level = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ground_distance/ground_ray/Marker3D"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_864cw")
-cast_shadow = 0
-mesh = SubResource("SphereMesh_focbt")
 
 [node name="collider" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true

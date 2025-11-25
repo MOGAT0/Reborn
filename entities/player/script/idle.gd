@@ -22,9 +22,6 @@ func update(delta:float):
 	if player.velocity.y > 0.0:
 		state_machine.change_state("jump")
 		return
-	elif player.is_crouching:
-		state_machine.change_state("crouch")
-		return
 	elif player.velocity.length() != 0.0:
 		state_machine.change_state("move")
 		return
@@ -33,6 +30,9 @@ func update(delta:float):
 		return
 	elif Input.is_action_just_pressed("attack") and weapon_manager.get_children().size() > 0:
 		state_machine.change_state("attack")
+		return
+	elif player.is_crouching:
+		state_machine.change_state("crouch")
 		return
 
 func physics_update(delta:float):

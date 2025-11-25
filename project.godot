@@ -100,5 +100,4 @@ common/physics_interpolation=true
 
 camera/depth_of_field/depth_of_field_bokeh_shape=0
 camera/depth_of_field/depth_of_field_bokeh_quality=0
-anti_aliasing/quality/screen_space_aa=1
 occlusion_culling/use_occlusion_culling=true

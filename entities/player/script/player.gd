@@ -47,12 +47,14 @@ func _process(delta: float) -> void:
 	collider.disabled = is_crouching
 	crouch_collider.disabled = !collider.disabled
 	
+	print(animation_state.get_current_node())
+	
 	move_and_slide()
 
 func gravity_handling(delta:float) -> void:
 	if !is_on_floor():
 		velocity.y -= (gravity * delta) * 3
-	elif Input.is_action_just_pressed("jump"):
+	elif Input.is_action_just_pressed("jump") and ground_ray.is_colliding():
 		velocity.y = gravity
 
 	#print(animation_state.get_current_node())

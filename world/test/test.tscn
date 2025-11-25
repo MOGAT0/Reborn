@@ -133,4 +133,4 @@ projection = 1
 size = 101.355
 
 [node name="player" parent="." instance=ExtResource("2_2khio")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.16587, 102.16737, 18.639624)
