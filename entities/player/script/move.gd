@@ -1,7 +1,7 @@
 extends State
 class_name Move_state
 
-@onready var player: Player = $"../.."
+@onready var player = $"../.."
 @onready var animation_tree: AnimationTree = %AnimationTree
 @onready var animation_state = animation_tree["parameters/playback"]
 

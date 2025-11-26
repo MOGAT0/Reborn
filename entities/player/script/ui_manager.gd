@@ -13,6 +13,6 @@ func _process(delta: float) -> void:
 		is_inv_open = !is_inv_open
 	
 	if is_inv_open:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

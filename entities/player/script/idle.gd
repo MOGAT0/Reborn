@@ -1,7 +1,8 @@
 extends State
 class_name Idle_state
 
-@onready var player: Player = $"../.."
+@onready var player: CharacterBody3D = $"../.."
+
 @onready var animation_tree: AnimationTree = %AnimationTree
 @onready var animation_state = animation_tree["parameters/playback"]
 
