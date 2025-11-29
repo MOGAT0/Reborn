@@ -1,0 +1,11 @@
+{
+	"inventory": {
+		"knight_helmet": {
+			"amount": 1,
+			"description": "a helmet of the reborn knight",
+			"icon_path": "res://assets/img/knight armor set icon/knight_helmet.png",
+			"mesh": "res://entities/player/armor/knight_armor/Knight_chestplate.res",
+			"type": "helmet"
+		}
+	}
+}

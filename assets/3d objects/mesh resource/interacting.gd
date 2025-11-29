@@ -12,15 +12,7 @@ func _ready() -> void:
 		push_warning("No material_override set on MultiMeshInstance3D!")
 
 func _process(delta: float) -> void:
+	target = GlobalScript.player
 	if target and shader_material:
 		# Update shader parameter with target position
 		shader_material.set_shader_parameter("interracting_object_pos", target.global_position)
-		print(target)
-
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	target = body
-
-
-func _on_area_3d_body_exited(body: Node3D) -> void:
-	if body == target:
-		target = null

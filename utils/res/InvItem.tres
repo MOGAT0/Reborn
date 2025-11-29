@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=2 format=3 uid="uid://dh6rk3b6ftt13"]
+
+[ext_resource type="Script" uid="uid://bp4j7nl5lkkqe" path="res://utils/gd/inv_item.gd" id="1_samqq"]
+
+[resource]
+script = ExtResource("1_samqq")
+metadata/_custom_type_script = "uid://bp4j7nl5lkkqe"

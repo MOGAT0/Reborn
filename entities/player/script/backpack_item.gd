@@ -5,4 +5,4 @@ func _ready() -> void:
 		btn.connect("pressed", Callable(self, "_on_button_pressed").bind(btn))
 
 func _on_button_pressed(btn:Button):
-	print(btn)
+	pass

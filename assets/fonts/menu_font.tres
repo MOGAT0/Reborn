@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://b0dufml55eb0v"]
+
+[ext_resource type="FontFile" uid="uid://b0ye2nwlwg7yp" path="res://assets/fonts/Thewitcher-jnOj.ttf" id="1_04jpg"]
+
+[resource]
+font = ExtResource("1_04jpg")
+font_size = 55
+font_color = Color(0.51357734, 0.50108445, 0.4594416, 1)

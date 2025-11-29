@@ -23,6 +23,7 @@ func update(delta: float):
 	# --- FALL CHECK ---
 	if player.velocity.y < 0.0 and !player.is_on_floor() and !ground_ray.is_colliding():
 		state_machine.change_state("fall_idle")
+		print("switched")
 		return
 
 	# --- JUMP CHECK ---

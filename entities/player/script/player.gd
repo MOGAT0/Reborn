@@ -38,8 +38,10 @@ var is_crouching: bool = false
 func _ready() -> void:
 	cam_holder_y.rotate_y(deg_to_rad(180))
 	%minimap_display.visible = true
+	GlobalScript.player = self
 
 func _process(delta: float) -> void:
+	GlobalScript.player = self
 	camera.fov = lerp(camera.fov,FOV,delta*10)
 	_camera_rotation()
 	_handle_lock(delta)
@@ -50,6 +52,11 @@ func _process(delta: float) -> void:
 	#print(animation_state.get_current_node())
 	
 	move_and_slide()
+
+func _CanDamage():
+	GlobalScript.can_damage = true
+func _DisableAttack():
+	GlobalScript.can_damage = false
 
 func gravity_handling(delta:float) -> void:
 	if !is_on_floor():

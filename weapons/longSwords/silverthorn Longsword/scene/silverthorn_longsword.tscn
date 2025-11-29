@@ -1,12 +1,27 @@
-[gd_scene load_steps=17 format=4 uid="uid://dqli8hcbtpjlm"]
+[gd_scene load_steps=23 format=4 uid="uid://dqli8hcbtpjlm"]
 
 [ext_resource type="Script" uid="uid://dflrutwo05fq0" path="res://weapons/longSwords/silverthorn Longsword/scene/longsword.gd" id="1_cdvje"]
 [ext_resource type="Texture2D" uid="uid://8xfn6dlhb6h5" path="res://weapons/longSwords/silverthorn Longsword/silverthorn Longsword_Used Metal_basecolor.jpg" id="1_ifm7q"]
+[ext_resource type="Script" uid="uid://byhiiyf0pce1k" path="res://utils/gd/weapon_stat.gd" id="2_64bjc"]
 [ext_resource type="Texture2D" uid="uid://bdvo3vwnq6psl" path="res://weapons/longSwords/silverthorn Longsword/silverthorn Longsword_Used Metal_roughness.png" id="2_cdvje"]
 [ext_resource type="Texture2D" uid="uid://c3ap5ex6aiwsw" path="res://weapons/longSwords/silverthorn Longsword/silverthorn Longsword_Used Metal_normal.jpg" id="3_5vwia"]
+[ext_resource type="Script" uid="uid://cfl02rf52uc0o" path="res://utils/gd/weapon_info.gd" id="3_6exnp"]
 [ext_resource type="Texture2D" uid="uid://kpttooleovpp" path="res://weapons/longSwords/silverthorn Longsword/silverthorn Longsword_Substance_graph_basecolor.jpg" id="4_p55de"]
 [ext_resource type="Texture2D" uid="uid://dwatxyxh7r71" path="res://weapons/longSwords/silverthorn Longsword/silverthorn Longsword_Substance_graph_roughness.png" id="5_64bjc"]
 [ext_resource type="Texture2D" uid="uid://d2qycxgddspm3" path="res://weapons/longSwords/silverthorn Longsword/silverthorn Longsword_Substance_graph_normal.jpg" id="6_6exnp"]
+[ext_resource type="PackedScene" uid="uid://bcfhss4hio5du" path="res://components/_attack.tscn" id="8_5vwia"]
+
+[sub_resource type="Resource" id="Resource_widqw"]
+script = ExtResource("2_64bjc")
+metadata/_custom_type_script = "uid://byhiiyf0pce1k"
+
+[sub_resource type="Resource" id="Resource_8nxep"]
+script = ExtResource("3_6exnp")
+anim_list = Array[String](["longsword_attack_1", "longsword_attack_2", "longsword_attack_3", "longsword_attack_4"])
+wait_time = 0.8
+switch_time = 0.45
+delay_aceleration = Array[float]([0.5, 0.3, 0.3, 0.4])
+metadata/_custom_type_script = "uid://cfl02rf52uc0o"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdvje"]
 render_priority = 1
@@ -179,8 +194,14 @@ shadow_mesh = SubResource("ArrayMesh_w2kqy")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cdvje"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p55de"]
+radius = 0.86376953
+height = 9.168701
+
 [node name="silverthorn Longsword" type="Node3D"]
 script = ExtResource("1_cdvje")
+stats = SubResource("Resource_widqw")
+properties = SubResource("Resource_8nxep")
 
 [node name="Silverthorn Longsword" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.335, 0)
@@ -192,3 +213,12 @@ skeleton = NodePath("")
 shape = SubResource("CapsuleShape3D_cdvje")
 target_position = Vector3(0, 9.485, 0)
 collision_mask = 4
+
+[node name="Attack" parent="." instance=ExtResource("8_5vwia")]
+damage_ammount = 10.0
+
+[node name="atk_col" type="CollisionShape3D" parent="Attack"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.0897098, 0)
+shape = SubResource("CapsuleShape3D_p55de")
+debug_color = Color(0.08767474, 1, 0, 0.41960785)

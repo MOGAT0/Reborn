@@ -1,7 +1,8 @@
 extends LongSword
 
-@export var stats: Resource = preload("uid://gisqjssid370")
-@export var properties: Resource = preload("uid://eqgalmoxifie")
+@export var stats: WeaponStat
+@export var properties: WeaponInfo
+@onready var atk_col: CollisionShape3D = %atk_col
 
 var animation_tree: AnimationTree
 var animation_state
@@ -18,6 +19,7 @@ var aceleration_index : int = 0
 
 
 func _process(delta: float) -> void:
+	atk_col.disabled = !GlobalScript.can_damage
 	if animation_tree:
 		animation_state = animation_tree["parameters/playback"]
 	

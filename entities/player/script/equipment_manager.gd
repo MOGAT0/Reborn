@@ -21,5 +21,3 @@ func _on_button_pressed(btn:Button):
 					
 					# Apply it back as an override
 					panel_icon.add_theme_stylebox_override("panel", stylebox)
-					
-					print("Texture applied to:", panel_icon)

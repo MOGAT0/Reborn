@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckv7ru0eqyowu"]
+
+[ext_resource type="Script" uid="uid://dm4xhbqfr00at" path="res://world/test/quadtree.gd" id="1_sf0ro"]
+[ext_resource type="Material" uid="uid://c5pcc21ceaccr" path="res://assets/grid-prototyping/new_standard_material_3d.tres" id="2_kdcge"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kdcge"]
+noise_type = 3
+frequency = 0.0185
+fractal_type = 3
+fractal_gain = 0.31
+fractal_weighted_strength = 0.05
+fractal_ping_pong_strength = 2.32
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kdcge"]
+noise = SubResource("FastNoiseLite_kdcge")
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_sf0ro")
+heightmap = SubResource("NoiseTexture2D_kdcge")
+focus_position = Vector3(1.326, 0.519, -22.3)
+material = ExtResource("2_kdcge")

@@ -26,19 +26,19 @@ func update(delta:float):
 	if player.velocity.y > 0.0:
 		state_machine.change_state("jump")
 		return
-	elif !player.is_on_floor() and !ground_ray.is_colliding():
+	if !player.is_on_floor() and !ground_ray.is_colliding():
 		state_machine.change_state("fall_idle")
 		return
-	elif Input.is_action_just_pressed("attack") and weapon_manager.get_children().size() > 0:
+	if Input.is_action_just_pressed("attack") and weapon_manager.get_children().size() > 0:
 		state_machine.change_state("attack")
 		return
-	elif player.velocity.length() == 0 and player.player_dir == Vector2.ZERO:
+	if player.velocity.length() == 0 and player.player_dir == Vector2.ZERO:
 		state_machine.change_state("idle")
 		return
-	elif Input.is_action_pressed("sprint") and player.velocity.length() > 0.1 and state_machine.current_state.name != "attack" and state_machine.current_state.name != "fall_idle":
+	if Input.is_action_pressed("sprint") and player.velocity.length() > 0.1 and state_machine.current_state.name != "attack" and state_machine.current_state.name != "fall_idle":
 		state_machine.change_state("run")
 		return
-	elif player.is_crouching:
+	if player.is_crouching:
 		state_machine.change_state("crouch")
 		return
 

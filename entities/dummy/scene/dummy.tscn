@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://c7qvgekdcpogp"]
+[gd_scene load_steps=26 format=4 uid="uid://c7qvgekdcpogp"]
 
 [ext_resource type="Script" uid="uid://cawigxvgl4cx4" path="res://entities/dummy/script/dummy.gd" id="1_lbxg0"]
 [ext_resource type="Texture2D" uid="uid://du01icm0qpv5t" path="res://entities/dummy/model/dummy_stylized_wood_01_color.jpg" id="2_nthkv"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dg7xfoh6cxhae" path="res://entities/dummy/model/dummy_Knit_Fabric_basecolor-Knit_Fabric_Opacity.png" id="5_0af6a"]
 [ext_resource type="Texture2D" uid="uid://l8qex3kgdlpf" path="res://entities/dummy/model/dummy_Knit_Fabric_roughness.png" id="6_8e1g0"]
 [ext_resource type="Texture2D" uid="uid://b4jd078e2cn2r" path="res://entities/dummy/model/dummy_Knit_Fabric_normal.jpg" id="7_1wm4x"]
+[ext_resource type="PackedScene" uid="uid://c3gnjmaye4q84" path="res://components/_Health.tscn" id="8_1jcxx"]
+[ext_resource type="PackedScene" uid="uid://b137ox6jh1tai" path="res://components/_damage.tscn" id="9_o7rrp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lbxg0"]
 radius = 0.24511719
@@ -195,6 +197,18 @@ stencil_color = Color(1, 0.52057976, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_1wm4x"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o7rrp"]
+radius = 0.3696289
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7rrp"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0af6a"]
+bg_color = Color(0, 1, 0.1711092, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_o7rrp"]
+viewport_path = NodePath("SubViewport")
+
 [node name="dummy" type="CharacterBody3D" groups=["targetable"]]
 script = ExtResource("1_lbxg0")
 
@@ -214,8 +228,39 @@ skeleton = NodePath("")
 [node name="target_pos" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1513773, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="minimap_view" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+visible = false
 layers = 2
 material_override = SubResource("StandardMaterial3D_8e1g0")
 cast_shadow = 0
 mesh = SubResource("SphereMesh_1wm4x")
+
+[node name="Health" parent="." node_paths=PackedStringArray("HP_Bar") instance=ExtResource("8_1jcxx")]
+HP_ammount = 100.0
+HP_Bar = NodePath("../SubViewport/HP")
+
+[node name="Damage" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("9_o7rrp")]
+parent = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Damage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8100207, 0)
+shape = SubResource("CapsuleShape3D_o7rrp")
+debug_color = Color(1, 0.054025173, 0.00018495321, 0.41960785)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(423, 27)
+
+[node name="HP" type="ProgressBar" parent="SubViewport"]
+unique_name_in_owner = true
+offset_right = 423.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_o7rrp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0af6a")
+value = 70.44
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.345, 0, 0, 0, 0.72, 0, 0, 0, 0.345, 0, 1.9944208, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_o7rrp")

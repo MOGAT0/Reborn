@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://0gsf00w44fii"]
+
+[ext_resource type="Script" uid="uid://rtfsvufd5vq2" path="res://world/test/mesh_quadtree.gd" id="1_gwjvn"]
+
+[node name="plane" type="MeshInstance3D"]
+script = ExtResource("1_gwjvn")
+focus_position = Vector3(0, 1, 0)

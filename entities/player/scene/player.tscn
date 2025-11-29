@@ -1,4 +1,4 @@
-[gd_scene load_steps=289 format=3 uid="uid://ce4r3rqnfgjwi"]
+[gd_scene load_steps=291 format=3 uid="uid://ce4r3rqnfgjwi"]
 
 [ext_resource type="Script" uid="uid://eo0edwgrsytd" path="res://entities/player/script/player.gd" id="1_8xc6n"]
 [ext_resource type="PackedScene" uid="uid://bfatsur33ogof" path="res://entities/player/scene/camera.tscn" id="2_5gr5v"]
@@ -48,7 +48,9 @@
 [ext_resource type="Script" uid="uid://cibpssnrnr52i" path="res://entities/player/script/backpack_item.gd" id="21_xs4aj"]
 [ext_resource type="PackedScene" uid="uid://cvymfk7exp5by" path="res://assets/UI Textures/cursor_UI.tscn" id="21_xuq6w"]
 [ext_resource type="Animation" uid="uid://dgq53os3k46q8" path="res://entities/player/imported_animation/longsword_attack_3.res" id="22_imh8g"]
+[ext_resource type="Script" uid="uid://piih4pk3q761" path="res://entities/player/script/inventory_manager.gd" id="23_83ji8"]
 [ext_resource type="FontFile" uid="uid://b0ye2nwlwg7yp" path="res://assets/fonts/Thewitcher-jnOj.ttf" id="24_6k7l0"]
+[ext_resource type="LabelSettings" uid="uid://b0dufml55eb0v" path="res://assets/fonts/menu_font.tres" id="24_s0ra0"]
 [ext_resource type="Animation" uid="uid://cpfh6l0xtk6xm" path="res://entities/player/imported_animation/longsword_shield_idle.res" id="25_sgsyk"]
 [ext_resource type="ArrayMesh" uid="uid://bh5ie54pjfj2q" path="res://entities/player/armor/knight_armor/Knight_chestplate.res" id="40_6k7l0"]
 [ext_resource type="ArrayMesh" uid="uid://l3u4rn60op08" path="res://entities/player/armor/knight_armor/Knight_gloves.res" id="41_83ji8"]
@@ -198,17 +200,25 @@ texture = ExtResource("20_sta6s")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ayb8a"]
 texture = ExtResource("20_sta6s")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rkaph"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_83ji8"]
-font = ExtResource("24_6k7l0")
-font_size = 55
-font_color = Color(0.51357734, 0.50108445, 0.4594416, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_s0ra0"]
 font = ExtResource("24_6k7l0")
 font_size = 36
 font_color = Color(0.3099175, 0.29745626, 0.2589058, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83ji8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fey8f"]
+font = ExtResource("24_6k7l0")
+font_size = 20
+font_color = Color(0.51357734, 0.50108445, 0.4594416, 1)
+stacked_shadow_count = 1
+stacked_shadow_0/offset = Vector2(1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cy04h"]
 bg_color = Color(0.30980393, 0.29803923, 0.25882354, 0.7294118)
@@ -3681,6 +3691,23 @@ tracks/23/path = NodePath("Armature")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = PackedFloat32Array(0, 1, 0.08176288, -0.33815965, 0.038216118, 0.936751, 0.033333335, 1, 0.08176288, -0.33815965, 0.038216118, 0.936751, 0.06666667, 1, 0.0770651, -0.42865363, 0.04149231, 0.89921933, 0.1, 1, 0.074437186, -0.52647626, 0.041425202, 0.8459113, 0.13333334, 1, 0.07313675, -0.62518805, 0.041117914, 0.7759512, 0.16666667, 1, 0.06965005, -0.71883136, 0.04431503, 0.6902656, 0.26666668, 1, 0.048621982, -0.9270444, 0.056403793, 0.36748224, 0.33333334, 1, 0.04117406, -0.98976284, 0.057249416, 0.1240842, 0.36666667, 1, -0.03242784, 0.9978138, -0.057422787, 0.004328978, 0.4, 1, -0.020285696, 0.98874885, -0.055931326, 0.13724408, 0.43333334, 1, -0.0076470873, 0.953497, -0.053739518, 0.2964743, 0.46666667, 1, 0.005904327, 0.87584853, -0.046451215, 0.4803091, 0.5, 1, 0.020330084, 0.78090894, -0.024083044, 0.62384933, 0.53333336, 1, 0.035883073, 0.66984755, 0.0057828273, 0.74160856, 0.56666666, 1, 0.04916759, 0.5617973, 0.03897983, 0.8248921, 0.6, 1, 0.060622934, 0.4773364, 0.07070804, 0.8737708, 0.6333333, 1, 0.06930305, 0.3986787, 0.096092105, 0.90940577, 0.6666667, 1, 0.0758377, 0.32294035, 0.11675799, 0.9361227, 0.7, 1, 0.08157194, 0.2503493, 0.13541861, 0.9551613, 0.73333335, 1, 0.0864326, 0.18101971, 0.15162833, 0.96786886, 0.76666665, 1, 0.09037353, 0.11521228, 0.16402297, 0.9755282, 0.8, 1, 0.093890525, 0.052592136, 0.17416467, 0.9788184, 0.8333333, 1, 0.09698116, -0.006668371, 0.1836092, 0.9781809, 0.8666667, 1, 0.09948137, -0.062106267, 0.1912924, 0.97450167, 0.9, 1, 0.10142797, -0.113901876, 0.1971612, 0.96843493, 0.93333334, 1, 0.10247199, -0.16014755, 0.20170595, 0.9608158, 0.96666664, 1, 0.102502376, -0.20064995, 0.20523667, 0.9524237, 1, 1, 0.10251009, -0.23804912, 0.20588253, 0.94362956)
+tracks/24/type = "method"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("%body/..")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_CanDamage"
+}, {
+"args": [],
+"method": &"_DisableAttack"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_msv80"]
 resource_name = "longsword_idle"
@@ -7081,1177 +7108,6 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_ayb8a")
 
-[node name="inventory" type="GridContainer" parent="UI_manager/Inventory/BG_Panel"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -158.0
-offset_top = -222.0
-offset_right = 158.0
-offset_bottom = 222.0
-grow_horizontal = 2
-grow_vertical = 2
-columns = 5
-
-[node name="item" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item2" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item2/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item3" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item3/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item4" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item4"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item4"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item4/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item5" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item5"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item5"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item5/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item6" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item6"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item6"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item6/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item7" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item7"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item7"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item7/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item8" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item8"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item8"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item8/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item9" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item9"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item9"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item9/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item10" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item10"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item10"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item10/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item11" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item11"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item11"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item11/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item12" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item12"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item12"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item12/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item13" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item13"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item13"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item13/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item14" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item14"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item14"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item14/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item15" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item15"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item15"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item15/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item16" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item16"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item16"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item16/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item17" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item17"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item17"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item17/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item18" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item18"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item18"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item18/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item19" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item19"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item19"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item19/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item20" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item20"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item20"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item20/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item21" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item21"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item21"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item21/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item22" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item22"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item22"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item22/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item23" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item23"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item23"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item23/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item24" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item24"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item24"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item24/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item25" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item25"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item25"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item25/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item26" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item26"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item26"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item26/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item27" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item27"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item27"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item27/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item28" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item28"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item28"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item28/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item29" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item29"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item29"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item29/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item30" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item30"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item30"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item30/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item31" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item31"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item31"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item31/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item32" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item32"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item32"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item32/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item33" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item33"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item33"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item33/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item34" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item34"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item34"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item34/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
-[node name="item35" type="Button" parent="UI_manager/Inventory/BG_Panel/inventory" groups=["item_btn"]]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-flat = true
-
-[node name="slot_icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item35"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = ExtResource("8_lteq0")
-
-[node name="PanelContainer" type="PanelContainer" parent="UI_manager/Inventory/BG_Panel/inventory/item35"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7iu7")
-
-[node name="icon" type="Panel" parent="UI_manager/Inventory/BG_Panel/inventory/item35/PanelContainer"]
-modulate = Color(0.3099175, 0.29745626, 0.2589058, 1)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
-
 [node name="settings" type="VBoxContainer" parent="UI_manager/Inventory/BG_Panel"]
 unique_name_in_owner = true
 visible = false
@@ -8275,7 +7131,7 @@ script = ExtResource("21_xs4aj")
 layout_mode = 2
 text = "Settings
 "
-label_settings = SubResource("LabelSettings_83ji8")
+label_settings = ExtResource("24_s0ra0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -8499,8 +7355,70 @@ label_settings = SubResource("LabelSettings_s0ra0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel" type="Panel" parent="UI_manager/Inventory"]
+[node name="inventory" type="ScrollContainer" parent="UI_manager/Inventory/BG_Panel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(342, 444)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.0
+offset_top = -260.0
+offset_right = 171.0
+offset_bottom = 206.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_83ji8")
+
+[node name="inventory_slots_manager" type="GridContainer" parent="UI_manager/Inventory/BG_Panel/inventory"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+columns = 5
+script = ExtResource("23_83ji8")
+
+[node name="instruction" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel"]
+unique_name_in_owner = true
 visible = false
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.17857143
+anchor_top = 0.8611111
+anchor_right = 0.5714286
+anchor_bottom = 0.9074074
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 24
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/instruction"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI_manager/Inventory/BG_Panel/instruction/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "[E] Equip"
+label_settings = SubResource("LabelSettings_fey8f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI_manager/Inventory/BG_Panel/instruction"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI_manager/Inventory/BG_Panel/instruction/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "[Q] drop"
+label_settings = SubResource("LabelSettings_fey8f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="UI_manager/Inventory"]
 anchors_preset = -1
 anchor_left = 0.6111111
 anchor_right = 1.0
@@ -8608,7 +7526,7 @@ cast_shadow = 0
 mesh = SubResource("SphereMesh_5gr5v")
 
 [node name="weapon" type="BoneAttachment3D" parent="."]
-transform = Transform3D(-0.17786798, -0.04776131, 0.07798538, 0.08162962, -0.15980713, 0.08830757, 0.041224748, 0.11036517, 0.16161682, -0.4390235, 1.6652352, 0.27651176)
+transform = Transform3D(-0.1746746, -0.0400476, 0.08879666, 0.07813889, -0.16646668, 0.07863237, 0.05816333, 0.103367895, 0.1610342, -0.41204038, 1.6237963, 0.25247577)
 bone_name = "arm.R_end"
 bone_idx = 15
 use_external_skeleton = true
@@ -8620,7 +7538,7 @@ transform = Transform3D(-1.7262636e-10, 1.8802493e-07, 1, 0.86602545, 0.49999994
 script = ExtResource("11_dg4u3")
 
 [node name="offhand" type="BoneAttachment3D" parent="."]
-transform = Transform3D(-0.16238001, 0.03011712, -0.11280772, -0.08247119, -0.16636887, 0.07429561, -0.08265072, 0.10683769, 0.14749414, 0.40089357, 1.6558433, 0.31321892)
+transform = Transform3D(-0.16243382, 0.023402015, -0.114313, -0.071141474, -0.17516853, 0.06522871, -0.092487924, 0.09363888, 0.150591, 0.3801959, 1.6078898, 0.26238433)
 bone_name = "arm.L_end"
 bone_idx = 8
 use_external_skeleton = true
@@ -8631,7 +7549,7 @@ unique_name_in_owner = true
 transform = Transform3D(-0.14253777, -0.25806606, -0.95555466, -0.87938654, -0.41006476, 0.24192186, -0.45427117, 0.874785, -0.16849008, 0.12, -0.045, 0)
 
 [node name="shield_store" type="BoneAttachment3D" parent="."]
-transform = Transform3D(0.1971037, -0.001099271, -0.03389421, 0.0013700624, 0.19998968, 0.001481099, 0.033884358, -0.0016918369, 0.19710132, 0.0041682348, 2.2203555, -0.0004003942)
+transform = Transform3D(0.19770123, 0.00011417127, -0.030233642, -0.0013439953, 0.19983381, -0.0080339415, 0.03020398, 0.008144788, 0.19753806, 0.009594608, 2.2029765, -0.014261141)
 bone_name = "UpperChest"
 bone_idx = 4
 use_external_skeleton = true
@@ -8651,7 +7569,7 @@ unique_name_in_owner = true
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 
 [node name="Armature" type="Node3D" parent="body"]
-transform = Transform3D(0.9992263, 0.01896645, -0.0344157, -0.017083814, 0.9983835, 0.0541954, 0.035387963, -0.05356559, 0.9979364, -0.1688414, -0.07425612, 0.54583365)
+transform = Transform3D(0.99937636, 0.025725432, -0.024117986, -0.024404945, 0.9982666, 0.053532224, 0.025453335, -0.05291032, 0.99827373, -0.2185601, -0.16051853, 0.42722124)
 
 [node name="GeneralSkeleton" type="Skeleton3D" parent="body/Armature"]
 unique_name_in_owner = true
@@ -8675,42 +7593,42 @@ bones/2/parent = 1
 bones/2/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.955641e-14, 1.3386388, 2.7605282e-08)
 bones/2/enabled = true
 bones/2/position = Vector3(8.955641e-14, 1.3386388, 2.7605282e-08)
-bones/2/rotation = Quaternion(0.0081035625, -0.003667295, 0.00276489, 0.9999566)
+bones/2/rotation = Quaternion(0.012854997, -0.0038895672, 0.0024856827, 0.9999068)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Chest"
 bones/3/parent = 2
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3273094e-15, 1.0982561, 2.248934e-08)
 bones/3/enabled = true
 bones/3/position = Vector3(-2.3273094e-15, 1.0982561, 2.248934e-08)
-bones/3/rotation = Quaternion(0.007844726, -0.032059636, 0.0035663277, 0.9994489)
+bones/3/rotation = Quaternion(0.017315038, -0.029861614, 0.0029589299, 0.9993997)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "UpperChest"
 bones/4/parent = 3
 bones/4/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.296447e-14, 1.0982561, 2.2461064e-08)
 bones/4/enabled = true
 bones/4/position = Vector3(-5.296447e-14, 1.0982561, 2.2461064e-08)
-bones/4/rotation = Quaternion(0.007643478, -0.032003727, 0.004006008, 0.99945056)
+bones/4/rotation = Quaternion(0.017528273, -0.029369257, 0.003580441, 0.9994086)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "chest.L"
 bones/5/parent = 4
 bones/5/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.506881e-14, 1.098259, 2.2432564e-08)
 bones/5/enabled = true
 bones/5/position = Vector3(-7.506881e-14, 1.098259, 2.2432564e-08)
-bones/5/rotation = Quaternion(-0.002725196, 0.084622525, 0.016584659, 0.9962714)
+bones/5/rotation = Quaternion(-0.00022686398, 0.04904695, 0.016113723, 0.9986665)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "LeftShoulder"
 bones/6/parent = 5
 bones/6/rest = Transform3D(0, 1, 0, 0, 0, 1, 1, 0, 0, 0.87466407, -0.29728815, -4.5831573e-08)
 bones/6/enabled = true
 bones/6/position = Vector3(0.87466407, -0.29728815, -4.5831573e-08)
-bones/6/rotation = Quaternion(0.47487825, 0.19175872, 0.85146445, -0.112817176)
+bones/6/rotation = Quaternion(0.48766083, 0.17573126, 0.8479457, -0.11087705)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "arm.L"
 bones/7/parent = 6
 bones/7/rest = Transform3D(-0.00017851219, 0.07013804, 0.9975372, -0.2572887, 0.9639516, -0.06782267, -0.9663345, -0.2566671, 0.017873647, -0.17986375, 1.6849763, -0.08502359)
 bones/7/enabled = true
 bones/7/position = Vector3(-0.17986375, 1.6849763, -0.08502359)
-bones/7/rotation = Quaternion(0.123028286, 0.6600667, -0.15657529, 0.7243343)
+bones/7/rotation = Quaternion(0.121204756, 0.6607943, -0.15478677, 0.72436273)
 bones/7/scale = Vector3(0.99999994, 1, 0.99999994)
 bones/8/name = "arm.L_end"
 bones/8/parent = 7
@@ -8724,14 +7642,14 @@ bones/9/parent = 4
 bones/9/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.506881e-14, 1.098259, 2.2432564e-08)
 bones/9/enabled = true
 bones/9/position = Vector3(-7.506881e-14, 1.098259, 2.2432564e-08)
-bones/9/rotation = Quaternion(-0.020948922, 0.019596389, -0.013391572, 0.99949884)
+bones/9/rotation = Quaternion(-0.0050606686, 0.0174346, -0.00808201, 0.9998026)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/name = "Head"
 bones/10/parent = 9
 bones/10/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1567091e-13, 0.54031754, 1.1147259e-08)
 bones/10/enabled = true
 bones/10/position = Vector3(-1.1567091e-13, 0.54031754, 1.1147259e-08)
-bones/10/rotation = Quaternion(-0.021452826, 0.01945688, -0.012499882, 0.99950236)
+bones/10/rotation = Quaternion(-0.0053981906, 0.017406406, -0.007922567, 0.9998026)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/name = "head_end"
 bones/11/parent = 10
@@ -8745,21 +7663,21 @@ bones/12/parent = 4
 bones/12/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.506881e-14, 1.098259, 2.2432564e-08)
 bones/12/enabled = true
 bones/12/position = Vector3(-7.506881e-14, 1.098259, 2.2432564e-08)
-bones/12/rotation = Quaternion(0.0064837574, 0.020204948, -0.0041408814, 0.99976635)
+bones/12/rotation = Quaternion(0.010662076, 0.056552425, 0.01909782, 0.99816006)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/name = "RightShoulder"
 bones/13/parent = 12
 bones/13/rest = Transform3D(0, -1, 0, 0, 0, 1, -1, 0, 0, -0.87466407, -0.2972888, -4.5870188e-08)
 bones/13/enabled = true
 bones/13/position = Vector3(-0.87466407, -0.2972888, -4.5870188e-08)
-bones/13/rotation = Quaternion(0.5134971, -0.21396221, -0.82258564, -0.11787204)
+bones/13/rotation = Quaternion(0.5186972, -0.21444082, -0.8143563, -0.14762166)
 bones/13/scale = Vector3(1, 1, 1)
 bones/14/name = "arm.R"
 bones/14/parent = 13
 bones/14/rest = Transform3D(-0.00017851405, -0.07013806, -0.9975372, 0.2572886, 0.96395147, -0.067822635, 0.9663345, -0.25666708, 0.017873643, 0.17986375, 1.6849759, -0.08502429)
 bones/14/enabled = true
 bones/14/position = Vector3(0.17986375, 1.6849759, -0.08502429)
-bones/14/rotation = Quaternion(0.1377772, -0.65399545, 0.17103727, 0.72391546)
+bones/14/rotation = Quaternion(0.14507149, -0.6508705, 0.1781832, 0.7235831)
 bones/14/scale = Vector3(0.99999994, 0.9999999, 0.99999994)
 bones/15/name = "arm.R_end"
 bones/15/parent = 14
@@ -8780,28 +7698,28 @@ bones/17/parent = 16
 bones/17/rest = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, 1, 0.64214444, -0.064215355, -2.5691666e-08)
 bones/17/enabled = true
 bones/17/position = Vector3(0.64214444, -0.064215355, -2.5691666e-08)
-bones/17/rotation = Quaternion(0.040647358, 0.03865336, 0.9971783, 0.049892183)
+bones/17/rotation = Quaternion(0.036401007, 0.07536787, 0.99547106, 0.045078862)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "LeftLowerLeg"
 bones/18/parent = 17
 bones/18/rest = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -0.61029315, 3.1994221, 0.22759983)
 bones/18/enabled = true
 bones/18/position = Vector3(-0.61029315, 3.1994221, 0.22759983)
-bones/18/rotation = Quaternion(-0.027052026, 0.98125577, -0.1561499, 0.10964705)
+bones/18/rotation = Quaternion(-0.0322345, 0.97112644, -0.20643246, 0.115152486)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/name = "LeftFoot"
 bones/19/parent = 18
 bones/19/rest = Transform3D(-1, 0, 0, 0, 0, -1, 0, -1, 0, 0.5363186, 3.7542384, 0.22759956)
 bones/19/enabled = true
 bones/19/position = Vector3(0.5363186, 3.7542384, 0.22759956)
-bones/19/rotation = Quaternion(0.05246976, 0.628052, -0.7764004, -0.00027072078)
+bones/19/rotation = Quaternion(0.043908425, 0.61709815, -0.78566027, 0.00015315792)
 bones/19/scale = Vector3(1, 1, 1)
 bones/20/name = "LeftToes"
 bones/20/parent = 19
 bones/20/rest = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -1.1455475e-07, 0.6540366, -0.22296639)
 bones/20/enabled = true
 bones/20/position = Vector3(-1.1455475e-07, 0.6540366, -0.22296639)
-bones/20/rotation = Quaternion(-4.0185466e-07, 0.9999986, 0.0016669625, 5.9931786e-08)
+bones/20/rotation = Quaternion(-3.9170806e-07, 0.99999934, 0.001199771, 1.4043863e-07)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/name = "foot2.L_end"
 bones/21/parent = 20
@@ -8822,28 +7740,28 @@ bones/23/parent = 22
 bones/23/rest = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, 1, -0.6421445, -0.06421553, -2.584875e-08)
 bones/23/enabled = true
 bones/23/position = Vector3(-0.6421445, -0.06421553, -2.584875e-08)
-bones/23/rotation = Quaternion(-0.07183274, 0.0391898, 0.9953716, -0.050396606)
+bones/23/rotation = Quaternion(-0.07237235, 0.07286742, 0.99334013, -0.05222995)
 bones/23/scale = Vector3(1, 1, 1)
 bones/24/name = "RightLowerLeg"
 bones/24/parent = 23
 bones/24/rest = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0.6102931, 3.1994221, 0.22759986)
 bones/24/enabled = true
 bones/24/position = Vector3(0.6102931, 3.1994221, 0.22759986)
-bones/24/rotation = Quaternion(0.018027076, 0.98747915, -0.1480258, -0.051462755)
+bones/24/rotation = Quaternion(0.019498687, 0.9788406, -0.19611414, -0.05504763)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/name = "RightFoot"
 bones/25/parent = 24
 bones/25/rest = Transform3D(-1, 0, 0, 0, 0, -1, 0, -1, 0, -0.53631866, 3.7542388, 0.22759953)
 bones/25/enabled = true
 bones/25/position = Vector3(-0.53631866, 3.7542388, 0.22759953)
-bones/25/rotation = Quaternion(-0.022452911, 0.6416929, -0.7658206, 0.03528463)
+bones/25/rotation = Quaternion(-0.022548461, 0.6293461, -0.7761583, 0.031520285)
 bones/25/scale = Vector3(1, 1, 1)
 bones/26/name = "RightToes"
 bones/26/parent = 25
 bones/26/rest = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 5.8932812e-08, 0.65403646, -0.22296637)
 bones/26/enabled = true
 bones/26/position = Vector3(5.8932812e-08, 0.65403646, -0.22296637)
-bones/26/rotation = Quaternion(4.344833e-07, 0.9999976, 0.0021798918, -2.3343382e-08)
+bones/26/rotation = Quaternion(4.4678717e-07, 0.99999774, 0.0021477055, -5.205234e-08)
 bones/26/scale = Vector3(1, 1, 1)
 bones/27/name = "foot2.R_end"
 bones/27/parent = 26

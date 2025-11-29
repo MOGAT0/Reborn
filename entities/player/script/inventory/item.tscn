@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://cd7yw7uhpen6a"]
+
+[ext_resource type="Script" uid="uid://bhoojvwkbvmnn" path="res://entities/player/script/inventory/item.gd" id="1_a4a1v"]
+[ext_resource type="StyleBox" uid="uid://dxfbc38ubdo0k" path="res://assets/UI Textures/inv_slo.tres" id="1_js7go"]
+[ext_resource type="Texture2D" uid="uid://cald2tgr5jfee" path="res://assets/img/knight armor set icon/knight_helmet.png" id="2_vbubm"]
+[ext_resource type="Script" uid="uid://bp4j7nl5lkkqe" path="res://utils/gd/inv_item.gd" id="3_gc1fw"]
+
+[sub_resource type="Resource" id="Resource_sew5l"]
+script = ExtResource("3_gc1fw")
+item_name = "knight_helmet"
+item_ammount = 1
+item_icon = "res://assets/img/knight armor set icon/knight_helmet.png"
+item_type = "helmet"
+item_mesh = "res://entities/player/armor/knight_armor/Knight_helmet.res"
+metadata/_custom_type_script = "uid://bp4j7nl5lkkqe"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5a04"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rkaph"]
+texture = ExtResource("2_vbubm")
+
+[node name="item" type="Button" groups=["item_btn"]]
+custom_minimum_size = Vector2(60, 60)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+flat = true
+script = ExtResource("1_a4a1v")
+properties = SubResource("Resource_sew5l")
+
+[node name="slot_icon" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("1_js7go")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_r5a04")
+
+[node name="icon" type="Panel" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_rkaph")
+
+[node name="amount" type="Label" parent="PanelContainer/icon"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -11.0
+offset_right = 24.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 6

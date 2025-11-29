@@ -5,6 +5,8 @@ class_name Dummy
 @export var max_distance: float = 6.0     # largest patrol distance
 @export var move_speed: float = 2.0       # speed
 @export var is_moving : bool
+@onready var minimap_view: MeshInstance3D = %minimap_view
+@onready var hp: ProgressBar = %HP
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -21,6 +23,7 @@ func _ready() -> void:
 
 	# Randomize first distance
 	_set_new_random_distance()
+	minimap_view.visible = true
 
 
 func _physics_process(delta: float) -> void:
